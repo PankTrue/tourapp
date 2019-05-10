@@ -1,0 +1,52 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Clients</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Surname</th>
+      <th>Pantronymic</th>
+      <th>Gender</th>
+      <th>Datebirth</th>
+      <th>Phone</th>
+      <th>Additional phone</th>
+      <th>Email</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @clients.each do |client| %>
+      <%= render partial: 'table_row', locals: {client: client} %>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%#= link_to 'New Client', new_client_path %>
+
+<%= link_to 'New Client', '#new_client_modal', 'data-toggle' => 'modal' %>
+
+<div class="modal fade" id="new_client_modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+        <h4 class="modal-title" id="myModalLabel">Create new person</h4>
+      </div>
+      <div class="modal-body">
+        <%# Render the new person form (passing modal => true to enable remote => true) %>
+        <%= render 'form', modal: true %>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!--$(html).modal('show')-->
+<!--$('#confirmationDialog .confirm').on 'click', -> $.rails.confirmed(link)-->

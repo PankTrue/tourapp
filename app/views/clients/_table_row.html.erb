@@ -1,0 +1,14 @@
+<tr>
+  <td><%= client.name %></td>
+  <td><%= client.surname %></td>
+  <td><%= client.pantronymic %></td>
+  <td><%= client.gender %></td>
+  <td><%= client.datebirth %></td>
+  <td><%= client.phone %></td>
+  <td><%= client.additional_phone %></td>
+  <td><%= client.email %></td>
+  <td><%= link_to 'Show', client %></td>
+  <td><%= link_to 'Edit', edit_client_path(client), remote: true, :class => 'btn btn-sm btn-info' %></td>
+  <td><%= link_to 'Delete', client, remote: true, :method => :delete, data: {confirm: "Delete Customer: #{client.name} #{client.surname}"}, :class => 'btn btn-sm btn-danger' %> </td>
+</tr>
+
