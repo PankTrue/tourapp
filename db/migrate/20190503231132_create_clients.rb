@@ -20,6 +20,8 @@ class CreateClients < ActiveRecord::Migration[5.2]
       t.date    :international_passport_date_given
       t.date    :international_passport_date_end
 
+
+
       t.timestamps
     end
   end

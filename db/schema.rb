@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_05_10_192941) do
+ActiveRecord::Schema.define(version: 2019_05_13_214827) do
 
   create_table "clients", force: :cascade do |t|
     t.string "name"
@@ -18,9 +18,66 @@ ActiveRecord::Schema.define(version: 2019_05_10_192941) do
     t.string "pantronymic"
     t.string "gender"
     t.date "datebirth"
-    t.integer "phone"
-    t.integer "additional_phone"
+    t.string "phone"
+    t.string "additional_phone"
     t.string "email"
+    t.integer "main_passport_series"
+    t.integer "main_passport_number"
+    t.integer "main_passport_get_by"
+    t.integer "main_passport_date_given"
+    t.integer "main_passport_date_end"
+    t.integer "international_passport_series"
+    t.integer "international_passport_number"
+    t.string "international_passport_get_by"
+    t.date "international_passport_date_given"
+    t.date "international_passport_date_end"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "tour_details", force: :cascade do |t|
+  end
+
+  create_table "tours", force: :cascade do |t|
+    t.integer "customer_id"
+    t.string "tour_operator"
+    t.string "appeal"
+    t.string "advertising_source"
+    t.string "currency"
+    t.boolean "passport_type"
+    t.string "office_city"
+    t.string "agency_represented"
+    t.string "manager"
+    t.integer "number_person"
+    t.string "tour_country"
+    t.string "tour_city"
+    t.date "date_start"
+    t.date "date_end"
+    t.string "hotel_name"
+    t.date "hotel_start"
+    t.date "hotel_end"
+    t.string "room_category"
+    t.string "type_room"
+    t.string "type_food"
+    t.string "route_there"
+    t.string "route_back"
+    t.integer "flight_number"
+    t.string "fly_type"
+    t.string "type_of_transport_there"
+    t.string "type_of_transport_back"
+    t.string "flight_type_there"
+    t.string "flight_type_back"
+    t.string "flight_back_class"
+    t.integer "number_flight_back"
+    t.string "transfer_route"
+    t.string "transfer_type"
+    t.string "excursion_program"
+    t.string "additional_service"
+    t.integer "cost_tour"
+    t.integer "prepaid"
+    t.string "voluntary_insurance"
+    t.date "prihodnik_date"
+    t.integer "prihodnik_prepaid"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

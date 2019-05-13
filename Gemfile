@@ -52,3 +52,4 @@ gem 'jquery-rails'
 
 gem 'bootstrap-sass'
 gem 'paper_trail'
+gem 'rails_admin'

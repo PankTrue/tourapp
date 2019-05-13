@@ -1,0 +1,10 @@
+<% if user_signed_in? %>
+  <% if is_admin? %>
+    <li><%= link_to "Админ панель", '/admin' %></li>
+  <% end %>
+<!--  <li><%#= link_to "Личный кабинет", cabinet_home_path %></li>-->
+  <li><%= link_to 'Выход', destroy_user_session_path, :method=>'delete' %></li>
+<% else %>
+  <li><%= link_to 'Вход', new_user_session_path %></li>
+  <li><%= link_to 'Регистрация', new_user_registration_path %></li>
+<% end %>

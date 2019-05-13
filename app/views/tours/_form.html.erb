@@ -1,0 +1,212 @@
+<%= form_with(model: tour, local: true) do |form| %>
+  <% if tour.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(tour.errors.count, "error") %> prohibited this tour from being saved:</h2>
+
+      <ul>
+      <% tour.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :customer_id %>
+    <%= form.number_field :customer_id %>
+  </div>
+
+  <div class="field">
+    <%= form.label :tour_operator %>
+    <%= form.text_field :tour_operator %>
+  </div>
+
+  <div class="field">
+    <%= form.label :appeal %>
+    <%= form.text_field :appeal %>
+  </div>
+
+  <div class="field">
+    <%= form.label :advertising_source %>
+    <%= form.text_field :advertising_source %>
+  </div>
+
+  <div class="field">
+    <%= form.label :currency %>
+    <%= form.text_field :currency %>
+  </div>
+
+  <div class="field">
+    <%= form.label :passport_type %>
+    <%= form.check_box :passport_type %>
+  </div>
+
+  <div class="field">
+    <%= form.label :office_city %>
+    <%= form.text_field :office_city %>
+  </div>
+
+  <div class="field">
+    <%= form.label :agency_represented %>
+    <%= form.text_field :agency_represented %>
+  </div>
+
+  <div class="field">
+    <%= form.label :manager %>
+    <%= form.text_field :manager %>
+  </div>
+
+  <div class="field">
+    <%= form.label :number_person %>
+    <%= form.number_field :number_person %>
+  </div>
+
+  <div class="field">
+    <%= form.label :tour_country %>
+    <%= form.text_field :tour_country %>
+  </div>
+
+  <div class="field">
+    <%= form.label :tour_city %>
+    <%= form.text_field :tour_city %>
+  </div>
+
+  <div class="field">
+    <%= form.label :date_start %>
+    <%= form.date_select :date_start %>
+  </div>
+
+  <div class="field">
+    <%= form.label :date_end %>
+    <%= form.date_select :date_end %>
+  </div>
+
+  <div class="field">
+    <%= form.label :hotel_name %>
+    <%= form.text_field :hotel_name %>
+  </div>
+
+  <div class="field">
+    <%= form.label :hotel_start %>
+    <%= form.date_select :hotel_start %>
+  </div>
+
+  <div class="field">
+    <%= form.label :hotel_end %>
+    <%= form.date_select :hotel_end %>
+  </div>
+
+  <div class="field">
+    <%= form.label :room_category %>
+    <%= form.text_field :room_category %>
+  </div>
+
+  <div class="field">
+    <%= form.label :type_room %>
+    <%= form.text_field :type_room %>
+  </div>
+
+  <div class="field">
+    <%= form.label :type_food %>
+    <%= form.text_field :type_food %>
+  </div>
+
+  <div class="field">
+    <%= form.label :route_there %>
+    <%= form.text_field :route_there %>
+  </div>
+
+  <div class="field">
+    <%= form.label :route_back %>
+    <%= form.text_field :route_back %>
+  </div>
+
+  <div class="field">
+    <%= form.label :flight_number %>
+    <%= form.number_field :flight_number %>
+  </div>
+
+  <div class="field">
+    <%= form.label :fly_type %>
+    <%= form.text_field :fly_type %>
+  </div>
+
+  <div class="field">
+    <%= form.label :type_of_transport_there %>
+    <%= form.text_field :type_of_transport_there %>
+  </div>
+
+  <div class="field">
+    <%= form.label :type_of_transport_back %>
+    <%= form.text_field :type_of_transport_back %>
+  </div>
+
+  <div class="field">
+    <%= form.label :flight_type_there %>
+    <%= form.text_field :flight_type_there %>
+  </div>
+
+  <div class="field">
+    <%= form.label :flight_type_back %>
+    <%= form.text_field :flight_type_back %>
+  </div>
+
+  <div class="field">
+    <%= form.label :flight_back_class %>
+    <%= form.text_field :flight_back_class %>
+  </div>
+
+  <div class="field">
+    <%= form.label :number_flight_back %>
+    <%= form.number_field :number_flight_back %>
+  </div>
+
+  <div class="field">
+    <%= form.label :transfer_route %>
+    <%= form.text_field :transfer_route %>
+  </div>
+
+  <div class="field">
+    <%= form.label :transfer_type %>
+    <%= form.text_field :transfer_type %>
+  </div>
+
+  <div class="field">
+    <%= form.label :excursion_program %>
+    <%= form.text_field :excursion_program %>
+  </div>
+
+  <div class="field">
+    <%= form.label :additional_service %>
+    <%= form.text_field :additional_service %>
+  </div>
+
+  <div class="field">
+    <%= form.label :cost_tour %>
+    <%= form.number_field :cost_tour %>
+  </div>
+
+  <div class="field">
+    <%= form.label :prepaid %>
+    <%= form.number_field :prepaid %>
+  </div>
+
+  <div class="field">
+    <%= form.label :voluntary_insurance %>
+    <%= form.text_field :voluntary_insurance %>
+  </div>
+
+  <div class="field">
+    <%= form.label :prihodnik_date %>
+    <%= form.date_select :prihodnik_date %>
+  </div>
+
+  <div class="field">
+    <%= form.label :prihodnik_prepaid %>
+    <%= form.number_field :prihodnik_prepaid %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>
