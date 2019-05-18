@@ -16,4 +16,5 @@
 //= require turbolinks
 //= require bootstrap
 //= require bootstrap-sprockets
+//= require datatables.min.js
 //= require_tree .

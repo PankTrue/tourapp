@@ -8,22 +8,18 @@
     <%= csrf_meta_tags %>
 
     <%= stylesheet_link_tag "application", :media => "all" %>
-
-
-
     <%= javascript_include_tag "application" %>
 
   </head>
 
 
-
   <body>
-
-  <header>
-    <%= render 'layouts/navigation' %>
-  </header>
+    <div id="modal-holder"></div>
 
 
+    <header>
+      <%= render 'layouts/navigation' %>
+    </header>
 
 
     <div class="container">
@@ -32,6 +28,8 @@
           <%= yield %>
         </div>
       </div>
+
+
 
       <footer>
         <p>&copy; Company 2019</p>

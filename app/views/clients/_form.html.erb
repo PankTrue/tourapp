@@ -1,8 +1,4 @@
-
-<%# Conditionally set remote: true. Also, passing model name as data attribute %>
-<% modal ||= false %>
-<% remote = modal ? true : false %>
-<%= form_for(@client, remote: remote, html: {role: :form, 'data-model' => 'client'}) do |f| %>
+<%= form_for(@client, remote: request.xhr?, html: { data: { modal: true } }) do |f| %>
 
   <% if @client.errors.any? %>
     <div id="error_explanation">

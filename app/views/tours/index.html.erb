@@ -1,103 +1,177 @@
-<p id="notice"><%= notice %></p>
-
-<h1>Tours</h1>
-
-<table>
+<table id="tours-datatable" data-source="<%= tours_path(format: :json) %>">
   <thead>
-    <tr>
-      <th>Customer</th>
-      <th>Tour operator</th>
-      <th>Appeal</th>
-      <th>Advertising source</th>
-      <th>Currency</th>
-      <th>Passport type</th>
-      <th>Office city</th>
-      <th>Agency represented</th>
-      <th>Manager</th>
-      <th>Number person</th>
-      <th>Tour country</th>
-      <th>Tour city</th>
-      <th>Date start</th>
-      <th>Date end</th>
-      <th>Hotel name</th>
-      <th>Hotel start</th>
-      <th>Hotel end</th>
-      <th>Room category</th>
-      <th>Type room</th>
-      <th>Type food</th>
-      <th>Route there</th>
-      <th>Route back</th>
-      <th>Flight number</th>
-      <th>Fly type</th>
-      <th>Type of transport there</th>
-      <th>Type of transport back</th>
-      <th>Flight type there</th>
-      <th>Flight type back</th>
-      <th>Flight back class</th>
-      <th>Number flight back</th>
-      <th>Transfer route</th>
-      <th>Transfer type</th>
-      <th>Excursion program</th>
-      <th>Additional service</th>
-      <th>Cost tour</th>
-      <th>Prepaid</th>
-      <th>Voluntary insurance</th>
-      <th>Prihodnik date</th>
-      <th>Prihodnik prepaid</th>
-      <th colspan="3"></th>
-    </tr>
+  <tr>
+    <th>id</th>
+    <th>Покупатель</th>
+    <th>Tour operator</th>
+    <th>Appeal</th>
+    <th>Advertising source</th>
+    <th>Currency</th>
+    <th>Passport type</th>
+    <th>Office city</th>
+    <th>Agency represented</th>
+    <th>Manager</th>
+    <th>Number person</th>
+    <th>Tour country</th>
+    <th>Tour city</th>
+    <th>Date start</th>
+    <th>Date end</th>
+    <th>Hotel name</th>
+    <th>Hotel start</th>
+    <th>Hotel end</th>
+    <th>Room category</th>
+    <th>Type room</th>
+    <th>Type food</th>
+    <th>Route there</th>
+    <th>Route back</th>
+    <th>Flight number</th>
+    <th>Fly type</th>
+    <th>Type of transport there</th>
+    <th>Type of transport back</th>
+    <th>Flight type there</th>
+    <th>Flight type back</th>
+    <th>Flight back class</th>
+    <th>Number flight back</th>
+    <th>Transfer route</th>
+    <th>Transfer type</th>
+    <th>Excursion program</th>
+    <th>Additional service</th>
+    <th>Cost tour</th>
+    <th>Prepaid</th>
+    <th>Voluntary insurance</th>
+    <th>Prihodnik date</th>
+    <th>Prihodnik prepaid</th>
+    <th colspan="3"></th>
+  </tr>
   </thead>
-
   <tbody>
-    <% @tours.each do |tour| %>
-      <tr>
-        <td><%= tour.customer_id %></td>
-        <td><%= tour.tour_operator %></td>
-        <td><%= tour.appeal %></td>
-        <td><%= tour.advertising_source %></td>
-        <td><%= tour.currency %></td>
-        <td><%= tour.passport_type %></td>
-        <td><%= tour.office_city %></td>
-        <td><%= tour.agency_represented %></td>
-        <td><%= tour.manager %></td>
-        <td><%= tour.number_person %></td>
-        <td><%= tour.tour_country %></td>
-        <td><%= tour.tour_city %></td>
-        <td><%= tour.date_start %></td>
-        <td><%= tour.date_end %></td>
-        <td><%= tour.hotel_name %></td>
-        <td><%= tour.hotel_start %></td>
-        <td><%= tour.hotel_end %></td>
-        <td><%= tour.room_category %></td>
-        <td><%= tour.type_room %></td>
-        <td><%= tour.type_food %></td>
-        <td><%= tour.route_there %></td>
-        <td><%= tour.route_back %></td>
-        <td><%= tour.flight_number %></td>
-        <td><%= tour.fly_type %></td>
-        <td><%= tour.type_of_transport_there %></td>
-        <td><%= tour.type_of_transport_back %></td>
-        <td><%= tour.flight_type_there %></td>
-        <td><%= tour.flight_type_back %></td>
-        <td><%= tour.flight_back_class %></td>
-        <td><%= tour.number_flight_back %></td>
-        <td><%= tour.transfer_route %></td>
-        <td><%= tour.transfer_type %></td>
-        <td><%= tour.excursion_program %></td>
-        <td><%= tour.additional_service %></td>
-        <td><%= tour.cost_tour %></td>
-        <td><%= tour.prepaid %></td>
-        <td><%= tour.voluntary_insurance %></td>
-        <td><%= tour.prihodnik_date %></td>
-        <td><%= tour.prihodnik_prepaid %></td>
-        <td><%= link_to 'Show', tour %></td>
-        <td><%= link_to 'Edit', edit_tour_path(tour) %></td>
-        <td><%= link_to 'Destroy', tour, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
   </tbody>
 </table>
 
-<br>
 
-<%= link_to 'New Tour', new_tour_path %>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!--<p id="notice"><%#= notice %></p>-->
+
+<!--<h1>Tours</h1>-->
+
+<!--<table>-->
+<!--  <thead>-->
+<!--    <tr>-->
+<!--      <th>Customer</th>-->
+<!--      <th>Tour operator</th>-->
+<!--      <th>Appeal</th>-->
+<!--      <th>Advertising source</th>-->
+<!--      <th>Currency</th>-->
+<!--      <th>Passport type</th>-->
+<!--      <th>Office city</th>-->
+<!--      <th>Agency represented</th>-->
+<!--      <th>Manager</th>-->
+<!--      <th>Number person</th>-->
+<!--      <th>Tour country</th>-->
+<!--      <th>Tour city</th>-->
+<!--      <th>Date start</th>-->
+<!--      <th>Date end</th>-->
+<!--      <th>Hotel name</th>-->
+<!--      <th>Hotel start</th>-->
+<!--      <th>Hotel end</th>-->
+<!--      <th>Room category</th>-->
+<!--      <th>Type room</th>-->
+<!--      <th>Type food</th>-->
+<!--      <th>Route there</th>-->
+<!--      <th>Route back</th>-->
+<!--      <th>Flight number</th>-->
+<!--      <th>Fly type</th>-->
+<!--      <th>Type of transport there</th>-->
+<!--      <th>Type of transport back</th>-->
+<!--      <th>Flight type there</th>-->
+<!--      <th>Flight type back</th>-->
+<!--      <th>Flight back class</th>-->
+<!--      <th>Number flight back</th>-->
+<!--      <th>Transfer route</th>-->
+<!--      <th>Transfer type</th>-->
+<!--      <th>Excursion program</th>-->
+<!--      <th>Additional service</th>-->
+<!--      <th>Cost tour</th>-->
+<!--      <th>Prepaid</th>-->
+<!--      <th>Voluntary insurance</th>-->
+<!--      <th>Prihodnik date</th>-->
+<!--      <th>Prihodnik prepaid</th>-->
+<!--      <th colspan="3"></th>-->
+<!--    </tr>-->
+<!--  </thead>-->
+
+<!--  <tbody>-->
+    <%# @tours.each do |tour| %>
+<!--      <tr>-->
+<!--        <td><%#= tour.customer_id %></td>-->
+<!--        <td><%#= tour.tour_operator %></td>-->
+<!--        <td><%#= tour.appeal %></td>-->
+<!--        <td><%#= tour.advertising_source %></td>-->
+<!--        <td><%#= tour.currency %></td>-->
+<!--        <td><%#= tour.passport_type %></td>-->
+<!--        <td><%#= tour.office_city %></td>-->
+<!--        <td><%#= tour.agency_represented %></td>-->
+<!--        <td><%#= tour.manager %></td>-->
+<!--        <td><%#= tour.number_person %></td>-->
+<!--        <td><%#= tour.tour_country %></td>-->
+<!--        <td><%#= tour.tour_city %></td>-->
+<!--        <td><%#= tour.date_start %></td>-->
+<!--        <td><%#= tour.date_end %></td>-->
+<!--        <td><%#= tour.hotel_name %></td>-->
+<!--        <td><%#= tour.hotel_start %></td>-->
+<!--        <td><%#= tour.hotel_end %></td>-->
+<!--        <td><%#= tour.room_category %></td>-->
+<!--        <td><%#= tour.type_room %></td>-->
+<!--        <td><%#= tour.type_food %></td>-->
+<!--        <td><%#= tour.route_there %></td>-->
+<!--        <td><%#= tour.route_back %></td>-->
+<!--        <td><%#= tour.flight_number %></td>-->
+<!--        <td><%#= tour.fly_type %></td>-->
+<!--        <td><%#= tour.type_of_transport_there %></td>-->
+<!--        <td><%#= tour.type_of_transport_back %></td>-->
+<!--        <td><%#= tour.flight_type_there %></td>-->
+<!--        <td><%#= tour.flight_type_back %></td>-->
+<!--        <td><%#= tour.flight_back_class %></td>-->
+<!--        <td><%#= tour.number_flight_back %></td>-->
+<!--        <td><%#= tour.transfer_route %></td>-->
+<!--        <td><%#= tour.transfer_type %></td>-->
+<!--        <td><%#= tour.excursion_program %></td>-->
+<!--        <td><%#= tour.additional_service %></td>-->
+<!--        <td><%#= tour.cost_tour %></td>-->
+<!--        <td><%#= tour.prepaid %></td>-->
+<!--        <td><%#= tour.voluntary_insurance %></td>-->
+<!--        <td><%#= tour.prihodnik_date %></td>-->
+<!--        <td><%#= tour.prihodnik_prepaid %></td>-->
+<!--        <td><%#= link_to 'Show', tour %></td>-->
+<!--        <td><%#= link_to 'Edit', edit_tour_path(tour) %></td>-->
+<!--        <td><%#= link_to 'Destroy', tour, method: :delete, data: { confirm: 'Are you sure?' } %></td>-->
+<!--      </tr>-->
+    <%# end %>
+<!--  </tbody>-->
+<!--</table>-->
+
+<!--<br>-->
+
+<%#= link_to 'New Tour', new_tour_path %>
+
+
