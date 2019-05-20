@@ -1,45 +1,113 @@
 <p id="notice"><%= notice %> </p>
 
 
-<p>
-  <strong>Name:</strong>
-  <%= @client.name %>
-</p>
+<ul class="nav nav-tabs" id="myTab" role="tablist">
+  <li class="nav-item">
+    <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">О клиенте</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false">Туры</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" id="messages-tab" data-toggle="tab" href="#messages" role="tab" aria-controls="messages" aria-selected="false">Somethink</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" id="settings-tab" data-toggle="tab" href="#settings" role="tab" aria-controls="settings" aria-selected="false">Somethink</a>
+  </li>
+</ul>
 
-<p>
-  <strong>Surname:</strong>
-  <%= @client.surname %>
-</p>
+<!-- Tab panes -->
+<div class="tab-content">
+  <div class="tab-pane active" id="home" role="tabpanel" aria-labelledby="about-touris-tab">
 
-<p>
-  <strong>Pantronymic:</strong>
-  <%= @client.pantronymic %>
-</p>
+    <p>
+      <strong>Name:</strong>
+      <%= @client.name %>
+    </p>
 
-<p>
-  <strong>Gender:</strong>
-  <%= @client.gender %>
-</p>
+    <p>
+      <strong>Surname:</strong>
+      <%= @client.surname %>
+    </p>
 
-<p>
-  <strong>Datebirth:</strong>
-  <%= @client.datebirth %>
-</p>
+    <p>
+      <strong>Pantronymic:</strong>
+      <%= @client.pantronymic %>
+    </p>
 
-<p>
-  <strong>Phone:</strong>
-  <%= @client.phone %>
-</p>
+    <p>
+      <strong>Gender:</strong>
+      <%= @client.gender %>
+    </p>
 
-<p>
-  <strong>Additional phone:</strong>
-  <%= @client.additional_phone %>
-</p>
+    <p>
+      <strong>Datebirth:</strong>
+      <%= @client.datebirth %>
+    </p>
 
-<p>
-  <strong>Email:</strong>
-  <%= @client.email %>
-</p>
+    <p>
+      <strong>Phone:</strong>
+      <%= @client.phone %>
+    </p>
 
+    <p>
+      <strong>Additional phone:</strong>
+      <%= @client.additional_phone %>
+    </p>
+
+    <p>
+      <strong>Email:</strong>
+      <%= @client.email %>
+    </p>
+
+
+  </div>
+
+
+  <div class="tab-pane" id="profile" role="tabpanel" aria-labelledby="tours-tab">
+
+
+    <table id="client-tours" data-source="<%= clients_path(format: :json) %>">
+      <thead>
+        <tr>
+          <th>Договор</th>
+          <th>Период</th>
+          <th>Статус</th>
+          <th>Тур</th>
+          <th>Туроператор</th>
+          <th>Стоимость</th>
+        </tr>
+      </thead>
+
+
+          <% @tours.each do |tour|  %>
+      <tbody>
+        <tr>
+          <td><%= tour.id  %></td>
+          <td><%= "#{tour.date_start}-#{tour.date_end}" %></td>
+          <td><%= ".l.'"  %></td>
+          <td><%= tour.tour_country  %></td>
+          <td><%= tour.tour_operator  %></td>
+          <td><%= tour.cost_tour  %></td>
+        </tr>
+      </tbody>
+          <% end %>
+
+
+    </table>
+
+  </div>
+
+
+
+  <div class="tab-pane" id="messages" role="tabpanel" aria-labelledby="messages-tab">...</div>
+  <div class="tab-pane" id="settings" role="tabpanel" aria-labelledby="settings-tab">...</div>
+</div>
+
+
+
+
+
+<%= link_to 'Редактировать', edit_client_path,  class: 'btn btn-default', data: { modal: true } %>
 
 

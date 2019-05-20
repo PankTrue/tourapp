@@ -11,6 +11,7 @@ class ClientsController < ApplicationController
   end
 
   def show
+    @tours = @client.tours
     respond_modal_with @client
   end
 

@@ -41,6 +41,10 @@ function datatables_init() {
                 data: "email"
             }, {
                 data: "created_at"
+            }, {
+                data: "edit"
+            }, {
+                data: "delete"
             }
         ]
     });
