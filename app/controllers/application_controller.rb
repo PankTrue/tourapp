@@ -1,7 +1,7 @@
 class ApplicationController < ActionController::Base
   before_action :set_paper_trail_whodunnit
 
-  protect_from_forgery with: :exception
+  protect_from_forgery prepend: true
 
   def respond_modal_with(*args, &blk)
     options = args.extract_options!
