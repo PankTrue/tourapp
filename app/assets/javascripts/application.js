@@ -13,8 +13,10 @@
 //= require rails-ujs
 //= require activestorage
 //= require jquery
-//= require turbolinks
+//= require jquery-ui
 //= require bootstrap
 //= require bootstrap-sprockets
 //= require datatables.min.js
+//= require cocoon
+//= require select2-full
 //= require_tree .

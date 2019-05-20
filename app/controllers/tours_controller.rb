@@ -1,14 +1,18 @@
 class ToursController < ApplicationController
   before_action :set_tour, only: [:show, :edit, :update, :destroy]
 
+  respond_to :html, :json
+
+
   def index
     respond_to do |format|
       format.html
-      format.json { render json: TourDatatable.new(params) }
+      format.json { render json: TourDatatable.new(params, view_context: view_context) }
     end
   end
 
   def show
+    respond_modal_with @tour
   end
 
   def new
@@ -16,20 +20,32 @@ class ToursController < ApplicationController
   end
 
   def edit
+    respond_modal_with @tour
   end
 
   def create
     @tour = Tour.new(tour_params)
 
+    # @tour.id = Tour.maximum(:id) + 1
+    # puts "clients: " + @tour.clients
+    #
+    # raise @tour
+    #
+    #
+
     respond_to do |format|
       if @tour.save
+        @tour.update(tour_detail_params)
+
         format.html { redirect_to @tour, notice: 'Tour was successfully created.' }
-        format.json { render :show, status: :created, location: @tour }
+        format.json { render :show, status: :ok, location: @tour }
       else
-        format.html { render :new }
+        format.html { render :edit }
         format.json { render json: @tour.errors, status: :unprocessable_entity }
       end
     end
+
+    # respond_modal_with @tour
   end
 
   def update
@@ -59,6 +75,22 @@ class ToursController < ApplicationController
     end
 
     def tour_params
-      params.require(:tour).permit(:customer_id, :tour_operator, :appeal, :advertising_source, :currency, :passport_type, :office_city, :agency_represented, :manager, :number_person, :tour_country, :tour_city, :date_start, :date_end, :hotel_name, :hotel_start, :hotel_end, :room_category, :type_room, :type_food, :route_there, :route_back, :flight_number, :fly_type, :type_of_transport_there, :type_of_transport_back, :flight_type_there, :flight_type_back, :flight_back_class, :number_flight_back, :transfer_route, :transfer_type, :excursion_program, :additional_service, :cost_tour, :prepaid, :voluntary_insurance, :prihodnik_date, :prihodnik_prepaid)
+      params.require(:tour).permit(:customer_id, :tour_operator, :appeal, :advertising_source,
+                                   :currency, :passport_type, :office_city, :agency_represented,
+                                   :manager, :number_person, :tour_country, :tour_city, :date_start,
+                                   :date_end, :hotel_name, :hotel_start, :hotel_end, :room_category,
+                                   :type_room, :type_food, :route_there, :route_back, :flight_number,
+                                   :fly_type, :type_of_transport_there, :type_of_transport_back,
+                                   :flight_type_there, :flight_type_back, :flight_back_class,
+                                   :number_flight_back, :transfer_route, :transfer_type,
+                                   :excursion_program, :additional_service, :cost_tour, :prepaid,
+                                   :voluntary_insurance, :prihodnik_date, :prihodnik_prepaid
+                                   # clients_attributes: [:id]
+      )
     end
+
+  def tour_detail_params
+    params.require(:tour).permit(clients_attributes: [:id])
+  end
+
 end

@@ -1,0 +1,25 @@
+<tr class="nested-fields">
+  <td>
+    <%= link_to_remove_association "remove client", f, class: 'btn btn-primary btn-xs' %>
+  </td>
+
+  <td>
+    <%#= f.select :id, :client_id, Client.all.collect {|p| [ p.id, p.name ] }, class: 'select2' %>
+<!--        <select class="select2" style="width: 100%;" >-->
+<!--          <input type="hidden" name="id" class="select2" style="width: 100%;">-->
+<!--        </select>-->
+
+    <%= f.collection_select(:id, Client.all, :id,:name,{:prompt => "Select an item item" }, class: "select2",style: 'width: 900px;') %>
+  </td>
+
+
+
+<!--  <td>-->
+    <%#= f.collection_select(:id, Client.all, :id, :name,{:prompt => "Select an item item" }, class: "select2",style: 'width: 900px;') %>
+<!--  </td>-->
+<!--  <td>-->
+
+    <%#= hidden_field_tag(:id, class: 'select2', style: 'width: 100%;', data: { source: clients_autocomplite_path, placeholder: 'Search for a name' })  %>
+<!--  </td>-->
+
+</tr>

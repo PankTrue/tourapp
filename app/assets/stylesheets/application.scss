@@ -12,7 +12,9 @@
  *
   @import "bootstrap-sprockets";
   @import "bootstrap";
-  @import "datatables.min.css"
+ *= require datatables.min.css
+ *= require select2
+ *= require select2-bootstrap
  *= require_tree .
  *= require_self
  */

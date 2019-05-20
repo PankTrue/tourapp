@@ -1,4 +1,12 @@
 class TourDatatable < AjaxDatatablesRails::ActiveRecord
+  extend Forwardable
+
+  def_delegators :@view, :link_to, :tour, :edit_tour_path
+
+  def initialize(params, opts = {})
+    @view = opts[:view_context]
+    super
+  end
 
   def view_columns
     @view_columns ||=
@@ -49,7 +57,7 @@ class TourDatatable < AjaxDatatablesRails::ActiveRecord
   def data
     records.map do |record|
       {
-        id: record.id,
+        id: link_to(record.id, "/tours/#{record.id}", :class => 'btn btn-sm btn-default', data: { modal: true }),
         customer_id: record.customer_id,
         tour_operator: record.tour_operator,
         appeal: record.appeal,

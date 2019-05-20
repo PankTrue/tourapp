@@ -23,29 +23,34 @@ class ClientsController < ApplicationController
 
 
   def create
-    @client = Client.create(client_params)
+    @client = Client.create!(client_params)
     respond_modal_with @client, location: clients_path
   end
 
 
   def update
-    respond_to do |format|
-      if @client.update(client_params)
-        format.html { redirect_to @client, notice: 'Client was successfully updated.' }
-        format.json { render :show, status: :ok, location: @client }
-      else
-        format.html { render :edit }
-        format.json { render json: @client.errors, status: :unprocessable_entity }
-      end
-    end
+    @client.update!(client_params)
+    respond_modal_with @client, location: clients_path
   end
 
 
   def destroy
-    @client.destroy
+    @client.destroy!
+    respond_modal_with @client, location: clients_path
+  end
+
+  def autocomplite
+    if(params[:q]).blank?
+      @clients = Client.all.limit(25)
+    else
+      @clients = Client.where('lower(name) LIKE ?', "%#{params[:q].downcase}%")
+              .or(Client.where('lower(surname) LIKE ?', "%#{params[:q].downcase}%"))
+              .order('name asc').limit(25)
+    end
+
     respond_to do |format|
-      format.html { redirect_to clients_url, notice: 'Client was successfully destroyed.' }
-      format.json { head :no_content }
+      format.html { render json: @clients }
+      format.json { render json: @clients }
     end
   end
 
@@ -56,7 +61,8 @@ private
     end
 
     def client_params
-      params.require(:client).permit(:name, :surname, :pantronymic, :gender, :datebirth, :phone, :additional_phone, :email)
+      params.require(:client).permit(:name, :surname, :pantronymic, :gender,
+                                     :datebirth, :phone, :additional_phone, :email )
     end
 
 end
