@@ -26,16 +26,9 @@ class ToursController < ApplicationController
   def create
     @tour = Tour.new(tour_params)
 
-    # @tour.id = Tour.maximum(:id) + 1
-    # puts "clients: " + @tour.clients
-    #
-    # raise @tour
-    #
-    #
-
     respond_to do |format|
       if @tour.save
-        @tour.update(tour_detail_params)
+        tours_clients_params.values.each { |value| value.values.each {|v| Clients_Tour.create(client_id: v[:id], tour_id: @tour.id)} }
 
         format.html { redirect_to @tour, notice: 'Tour was successfully created.' }
         format.json { render :show, status: :ok, location: @tour }
@@ -89,7 +82,7 @@ class ToursController < ApplicationController
       )
     end
 
-  def tour_detail_params
+  def tours_clients_params
     params.require(:tour).permit(clients_attributes: [:id])
   end
 
