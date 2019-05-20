@@ -1,17 +1,11 @@
 <%# add navigation links to this file %>
-<li><%= link_to "Новости", clients_path %></li>
+<li><%= link_to "Tours", tours_path %></li>
 
 <li>
-  <div class="btn-group">
-    <button type="button" class="btn btn-sm dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+    <a type="button" class="" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
       Clients
-    </button>
-    <div class="dropdown-menu">
-      <a class="dropdown-item" href="#">Action</a>
-      <a class="dropdown-item" href="#">Another action</a>
-      <a class="dropdown-item" href="#">Something else here</a>
-      <div class="dropdown-divider"></div>
-      <a class="dropdown-item" href="#">Separated link</a>
+    <div class="dropdown-menu" style="background: black">
+      <%= link_to "Клиенты", clients_path, :class => 'dropdown-item btn btn-sm' %>
+      <%= link_to "Создать клиента", new_client_path, :class => 'dropdown-item btn btn-sm' %>
     </div>
-  </div>
 </li>
