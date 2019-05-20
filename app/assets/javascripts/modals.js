@@ -1,8 +1,36 @@
 $(function() {
-    const modal_holder_selector = '#modal-holder';
+
+
+    var modal_holder_selector = '';
     const modal_selector = '.modal';
 
+
+
     $(document).on('click', 'a[data-modal]', function() {
+
+
+        for(var i = 0;; i++)
+        {
+            modal_holder_selector = '#modal-holder-' + i;
+
+            if(!$("div").is(modal_holder_selector))  { break; }
+            if($(modal_holder_selector + ' ' + 'div.modal').css('display') == 'none')
+            {
+                $(modal_holder_selector).remove();
+            }
+        }
+
+
+        for (var i = 0;; i++)
+        {
+            modal_holder_selector = '#modal-holder-' + i;
+
+            if(!$("div").is(modal_holder_selector))  { break; }
+        }
+
+        $('body').append('<div id="' + modal_holder_selector.substring(1) + '"></div>');
+
+
         const location = $(this).attr('href');
         // Load modal dialog from server
         $.get(
