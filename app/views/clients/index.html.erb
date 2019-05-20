@@ -1,31 +1,19 @@
-<p id="notice"><%= notice %></p>
+<h1>Клиенты</h1>
+<%= link_to 'Новый клиент', new_client_path,  class: 'btn btn-default', data: { modal: true } %>
 
-<h1>Clients</h1>
 
-<table>
+<table id="clients-datatable" data-source="<%= clients_path(format: :json) %>">
   <thead>
-    <tr>
-      <th>Name</th>
-      <th>Surname</th>
-      <th>Pantronymic</th>
-      <th>Gender</th>
-      <th>Datebirth</th>
-      <th>Phone</th>
-      <th>Additional phone</th>
-      <th>Email</th>
-      <th colspan="3"></th>
-    </tr>
+  <tr>
+    <th>ID</th>
+    <th>ФИО</th>
+    <th>Телефон</th>
+    <th>E-mail</th>
+    <th>Добавлен</th>
+    <th colspan="3"></th>
+  </tr>
   </thead>
-
   <tbody>
-    <% @clients.each do |client| %>
-      <%= render partial: 'table_row', locals: {client: client} %>
-    <% end %>
   </tbody>
 </table>
-
-<br>
-
-<%= link_to 'New Client', new_client_path,  class: 'btn btn-default', data: { modal: true } %>
-
 

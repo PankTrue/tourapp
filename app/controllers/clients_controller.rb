@@ -4,8 +4,10 @@ class ClientsController < ApplicationController
   respond_to :html, :json
 
   def index
-    @clients = Client.all
-    @client  = Client.new
+    respond_to do |format|
+      format.html
+      format.json { render json: ClientDatatable.new(params, view_context: view_context) }
+    end
   end
 
   def show

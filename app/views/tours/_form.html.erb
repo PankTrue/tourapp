@@ -2,8 +2,6 @@
   <%= f.error_notification %>
 
 
-
-
   <table class='table'>
     <thead>
     <tr>
@@ -25,7 +23,7 @@
 
   <div class="field">
     <%= f.label :customer_id %>
-    <%= f.number_field :customer_id %>
+    <%= f.input_field :customer_id, :as => :select, class: 'select2', style: 'width: 250px;' %>
   </div>
 
   <div class="field">
