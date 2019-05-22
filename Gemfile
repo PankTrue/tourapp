@@ -60,3 +60,5 @@ gem 'cocoon'
 gem 'jquery-ui-rails'
 gem "select2-rails"
 gem 'kaminari'
+gem 'client_side_validations'
+gem 'client_side_validations-simple_form'

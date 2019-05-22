@@ -1,16 +1,6 @@
-<%= form_for(@client, remote: request.xhr?, html: { data: { modal: true } }) do |f| %>
+<%= simple_form_for(@client, remote: request.xhr?, validate: true, html: { data: { modal: true } }) do |f| %>
+  <%= f.error_notification %>
 
-  <% if @client.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@client.errors.count, "error") %> prohibited this person from being saved:</h2>
-
-      <ul>
-        <% @client.errors.full_messages.each do |msg| %>
-          <li><%= msg %></li>
-        <% end %>
-      </ul>
-    </div>
-  <% end %>
 
   <div class="form-group">
     <%= f.label :name, class: 'control-label' %><br>
@@ -60,9 +50,61 @@
     <span class="help-block"></span>
   </div>
 
+  <div class="form-group">
+
+    <span class="help-block"></span>
+  </div>
+
+  <div class="form-group">
+
+    <span class="help-block"></span>
+  </div>
+
+  <div class="form-group">
+
+    <span class="help-block"></span>
+  </div>
+
+  <div class="form-group">
+
+    <span class="help-block"></span>
+  </div>
+
+  <div class="form-group">
+
+    <span class="help-block"></span>
+  </div>
+
+  <div class="form-group">
+
+    <span class="help-block"></span>
+  </div>
+
+  <div class="form-group">
+
+    <span class="help-block"></span>
+  </div>
+
+  <div class="form-group">
+
+    <span class="help-block"></span>
+  </div>
+
+  <div class="form-group">
+
+    <span class="help-block"></span>
+  </div>
+
+  <div class="form-group">
+
+    <span class="help-block"></span>
+  </div>
+
+
+
 
   <div class="actions">
-    <%= f.submit  @client.new_record? ? "Create Create" : "Update Customer", :class => "btn btn-primary" %>
+    <%= f.submit  @client.new_record? ? "Create" : "Update", :class => "btn btn-primary" %>
   </div>
 
 <% end %>

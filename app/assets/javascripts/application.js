@@ -19,4 +19,6 @@
 //= require datatables.min.js
 //= require cocoon
 //= require select2-full
+//= require rails.validations
+//= require rails.validations.simple_form.bootstrap4
 //= require_tree .

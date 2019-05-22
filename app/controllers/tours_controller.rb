@@ -1,5 +1,8 @@
 class ToursController < ApplicationController
+
   before_action :set_tour, only: [:show, :edit, :update, :destroy]
+
+
 
   respond_to :html, :json
 
@@ -37,8 +40,6 @@ class ToursController < ApplicationController
         format.json { render json: @tour.errors, status: :unprocessable_entity }
       end
     end
-
-    # respond_modal_with @tour
   end
 
   def update
@@ -78,7 +79,6 @@ class ToursController < ApplicationController
                                    :number_flight_back, :transfer_route, :transfer_type,
                                    :excursion_program, :additional_service, :cost_tour, :prepaid,
                                    :voluntary_insurance, :prihodnik_date, :prihodnik_prepaid
-                                   # clients_attributes: [:id]
       )
     end
 

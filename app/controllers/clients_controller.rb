@@ -65,7 +65,7 @@ private
 
     def client_params
       params.require(:client).permit(:name, :surname, :pantronymic, :gender,
-                                     :datebirth, :phone, :additional_phone, :email )
+                                     :datebirth, :phone, :additional_phone, :email)
     end
 
 end
