@@ -26,6 +26,7 @@ class ClientsController < ApplicationController
 
 
   def create
+    params[:user_id] = current_user.id
     @client = Client.create!(client_params)
     respond_modal_with @client, location: clients_path
   end
@@ -64,8 +65,9 @@ private
     end
 
     def client_params
-      params.require(:client).permit(:name, :surname, :pantronymic, :gender,
-                                     :datebirth, :phone, :additional_phone, :email)
+      params.require(:client).permit( :name, :surname, :pantronymic, :gender,
+                                      :datebirth, :phone, :additional_phone, :email,
+                                      :user_id )
     end
 
 end
