@@ -2,6 +2,7 @@ class CreateTours < ActiveRecord::Migration[5.2]
   def change
     create_table :tours do |t|
       t.integer :customer_id
+      t.integer :user_id
       t.string :tour_operator
       t.string :appeal
       t.string :advertising_source
@@ -9,7 +10,6 @@ class CreateTours < ActiveRecord::Migration[5.2]
       t.boolean :passport_type
       t.string :office_city
       t.string :agency_represented
-      t.string :manager
       t.integer :number_person
       t.string :tour_country
       t.string :tour_city

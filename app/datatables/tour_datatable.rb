@@ -66,7 +66,6 @@ class TourDatatable < AjaxDatatablesRails::ActiveRecord
         passport_type: record.passport_type,
         office_city: record.office_city,
         agency_represented: record.agency_represented,
-        manager: record.manager,
         number_person: record.number_person,
         tour_country: record.tour_country,
         tour_city: record.tour_city,

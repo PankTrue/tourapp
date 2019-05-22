@@ -3,7 +3,6 @@ class ToursController < ApplicationController
   before_action :set_tour, only: [:show, :edit, :update, :destroy]
 
 
-
   respond_to :html, :json
 
 
@@ -15,6 +14,7 @@ class ToursController < ApplicationController
   end
 
   def show
+    @manager = User.select(:name, :surname, :pantronymic).find(@tour.user_id)
     respond_modal_with @tour
   end
 
@@ -28,12 +28,13 @@ class ToursController < ApplicationController
 
   def create
     @tour = Tour.new(tour_params)
+    @tour.user_id = current_user.id
 
     respond_to do |format|
       if @tour.save
         tours_clients_params.values.each { |value| value.values.each {|v| Clients_Tour.create(client_id: v[:id], tour_id: @tour.id)} }
 
-        format.html { redirect_to @tour, notice: 'Tour was successfully created.' }
+        format.html { redirect_to @tour, success: 'Tour was successfully created.' }
         format.json { render :show, status: :ok, location: @tour }
       else
         format.html { render :edit }
@@ -69,9 +70,9 @@ class ToursController < ApplicationController
     end
 
     def tour_params
-      params.require(:tour).permit(:customer_id, :tour_operator, :appeal, :advertising_source,
+      params.require(:tour).permit(:customer_id, :user_id, :tour_operator, :appeal, :advertising_source,
                                    :currency, :passport_type, :office_city, :agency_represented,
-                                   :manager, :number_person, :tour_country, :tour_city, :date_start,
+                                   :number_person, :tour_country, :tour_city, :date_start,
                                    :date_end, :hotel_name, :hotel_start, :hotel_end, :room_category,
                                    :type_room, :type_food, :route_there, :route_back, :flight_number,
                                    :fly_type, :type_of_transport_there, :type_of_transport_back,

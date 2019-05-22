@@ -1,5 +1,7 @@
 class ApplicationController < ActionController::Base
 
+  add_flash_types :success, :danger, :info, :warning
+
   before_action :authenticate_user!
 
   before_action :set_paper_trail_whodunnit

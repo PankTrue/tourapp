@@ -12,6 +12,7 @@ class ClientsController < ApplicationController
 
   def show
     @tours = @client.tours
+    @manager = User.select(:name, :surname, :pantronymic).find(@tour.user_id)
     respond_modal_with @client
   end
 
@@ -26,8 +27,9 @@ class ClientsController < ApplicationController
 
 
   def create
-    params[:user_id] = current_user.id
-    @client = Client.create!(client_params)
+    @client = Client.new(client_params)
+    @client.user_id = current_user.id
+    @client.save!
     respond_modal_with @client, location: clients_path
   end
 

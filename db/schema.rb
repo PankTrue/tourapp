@@ -44,6 +44,7 @@ ActiveRecord::Schema.define(version: 2019_05_18_174746) do
 
   create_table "tours", force: :cascade do |t|
     t.integer "customer_id"
+    t.integer "user_id"
     t.string "tour_operator"
     t.string "appeal"
     t.string "advertising_source"
@@ -51,7 +52,6 @@ ActiveRecord::Schema.define(version: 2019_05_18_174746) do
     t.boolean "passport_type"
     t.string "office_city"
     t.string "agency_represented"
-    t.string "manager"
     t.integer "number_person"
     t.string "tour_country"
     t.string "tour_city"
@@ -98,6 +98,10 @@ ActiveRecord::Schema.define(version: 2019_05_18_174746) do
     t.string "current_sign_in_ip"
     t.string "last_sign_in_ip"
     t.integer "role_id", default: 0, null: false
+    t.string "name"
+    t.string "surname"
+    t.string "pantronymic"
+    t.string "phone"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["email"], name: "index_users_on_email", unique: true

@@ -76,6 +76,7 @@
           <th>Тур</th>
           <th>Туроператор</th>
           <th>Стоимость</th>
+          <th>Manager</th>
         </tr>
       </thead>
 
@@ -89,6 +90,7 @@
           <td><%= tour.tour_country  %></td>
           <td><%= tour.tour_operator  %></td>
           <td><%= tour.cost_tour  %></td>
+          <td><%= "#{@manager.name} #{@manager.surname} #{@manager.pantronymic}" %></td>
         </tr>
       </tbody>
           <% end %>
