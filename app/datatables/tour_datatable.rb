@@ -13,6 +13,7 @@ class TourDatatable < AjaxDatatablesRails::ActiveRecord
     {
       id: { source: "Tour.id", cond: :eq },
       customer_id: { source: "Tour.customer_id" },
+      manager: { source: "User.name" },
       tour_operator: { source: "Tour.tour_operator" },
       appeal: { source: "Tour.appeal" },
       advertising_source: { source: "Tour.advertising_source" },
@@ -20,7 +21,6 @@ class TourDatatable < AjaxDatatablesRails::ActiveRecord
       passport_type: { source: "Tour.passport_type" },
       office_city: { source: "Tour.office_city" },
       agency_represented: { source: "Tour.agency_represented" },
-      manager: { source: "Tour.manager" },
       number_person: { source: "Tour.number_person" },
       tour_country: { source: "Tour.tour_country" },
       tour_city: { source: "Tour.tour_city" },
@@ -58,7 +58,8 @@ class TourDatatable < AjaxDatatablesRails::ActiveRecord
     records.map do |record|
       {
         id: link_to(record.id, "/tours/#{record.id}", :class => 'btn btn-sm btn-default', data: { modal: true }),
-        customer_id: record.customer_id,
+        customer_id: link_to("#{record.customer_id}", "/clients/#{record.customer_id}", :class => 'btn btn-sm btn-default', data: { modal: true }),
+        manager: "#{record.user.name} #{record.user.surname}",
         tour_operator: record.tour_operator,
         appeal: record.appeal,
         advertising_source: record.advertising_source,

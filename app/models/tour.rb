@@ -1,6 +1,8 @@
 class Tour < ApplicationRecord
   has_paper_trail
 
+  # belongs_to :client, :class_name => 'Tour'
+
   belongs_to :user
 
   has_and_belongs_to_many :clients

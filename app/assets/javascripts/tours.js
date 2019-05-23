@@ -4,6 +4,7 @@ $(document).ready(function () {
     $('#tours-datatable').dataTable({
         processing: true,
         serverSide: true,
+        scrollY: 250,
         ajax: {
           url: $('#tours-datatable').data('source')
         },
@@ -13,6 +14,8 @@ $(document).ready(function () {
             data: 'id'
           }, {
             data: 'customer_id'
+          }, {
+            data: "manager"
           }, {
             data: "tour_operator"
           }, {
@@ -27,8 +30,6 @@ $(document).ready(function () {
             data: "office_city"
           }, {
             data: "agency_represented"
-          }, {
-            data: "manager"
           }, {
             data: "number_person"
           }, {

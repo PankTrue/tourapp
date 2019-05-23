@@ -12,7 +12,7 @@ class ClientsController < ApplicationController
 
   def show
     @tours = @client.tours
-    @manager = User.select(:name, :surname, :pantronymic).find(@tour.user_id)
+    @manager = User.select(:name, :surname, :pantronymic).find(@client.user_id)
     respond_modal_with @client
   end
 
