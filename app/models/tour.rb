@@ -1,7 +1,8 @@
 class Tour < ApplicationRecord
   has_paper_trail
 
-  # belongs_to :client, :class_name => 'Tour'
+  belongs_to :customer, class_name: 'User',foreign_key: 'customer_id'
+
 
   belongs_to :user
 
