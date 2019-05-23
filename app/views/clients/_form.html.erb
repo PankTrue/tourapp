@@ -3,7 +3,7 @@
 
 
   <div class="form-group">
-    <%= f.label "Имя", class: 'control-label' %><br>
+    <%= f.label :name, class: 'control-label' %><br>
     <%= f.text_field :name, class: 'form-control' %>
     <span class="help-block"></span>
   </div>
@@ -22,13 +22,13 @@
 
    <div class="form-group">
     <%= f.label :gender, class: 'control-label' %><br>
-    <%= f.text_field :gender, class: 'form-control' %>
+    <%= f.select :gender, Client::Gender_List, class: 'form-control' %>
     <span class="help-block"></span>
   </div>
 
    <div class="form-group">
     <%= f.label :datebirth, class: 'control-label' %><br>
-    <%= f.text_field :datebirth, class: 'form-control' %>
+    <%= f.date_select :datebirth, class: 'form-control' %>
     <span class="help-block"></span>
   </div>
 

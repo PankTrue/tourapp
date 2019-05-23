@@ -11,6 +11,6 @@ class Tour < ApplicationRecord
   accepts_nested_attributes_for :clients,
                                 allow_destroy: true
 
-  validates :tour_operator, presence: true
+  validates :customer_id, presence: true
 
 end

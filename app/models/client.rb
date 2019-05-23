@@ -1,6 +1,8 @@
 class Client < ApplicationRecord
   has_paper_trail
 
+  Gender_List = ['Мужской', 'Женский']
+
   belongs_to :user
 
   has_many :tours, class_name: 'Tour', foreign_key: 'customer'
@@ -12,4 +14,7 @@ class Client < ApplicationRecord
 
 
   validates :name, presence: true
+  validates :surname, presence: true
+  validates :pantronymic, presence: true
+
 end

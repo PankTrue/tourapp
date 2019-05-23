@@ -1,5 +1,15 @@
 ---
 ru:
+  simple_form:
+  show:
+    labels:
+      client:
+        name: 'Имя'
+        surname: 'Фамилия'
+        pantronymic: 'Отчество'
+        gender: 'Пол'
+        datebirth: 'День рождения'
+        phone: 'Телефон'
   activerecord:
     errors:
       messages:
