@@ -12,8 +12,8 @@ class TourDatatable < AjaxDatatablesRails::ActiveRecord
     @view_columns ||=
     {
       id: { source: "Tour.id", cond: :eq },
-      customer: { source: "Customer.name" },
-      manager: { source: "User.name" },
+      customer: { source: "Tour.customer_id" },
+      manager: { source: "Tour.user_id" },
       tour_operator: { source: "Tour.tour_operator" },
       appeal: { source: "Tour.appeal" },
       advertising_source: { source: "Tour.advertising_source" },
@@ -102,6 +102,7 @@ class TourDatatable < AjaxDatatablesRails::ActiveRecord
   end
 
   def get_raw_records
+    # Tour.joins(:customer, :user).distinct
     Tour.all
   end
 

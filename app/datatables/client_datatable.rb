@@ -23,7 +23,7 @@ class ClientDatatable < AjaxDatatablesRails::ActiveRecord
     records.map do |record|
       {
           id: link_to(record.id, "/clients/#{record.id}", :class => 'btn btn-sm btn-default', data: { modal: true }),
-          FIO: record.name + ' ' + record.surname,
+          FIO:  "#{record.name} #{record.surname} #{record.pantronymic}",
           phone: record.phone,
           email: record.email,
           created_at: record.created_at

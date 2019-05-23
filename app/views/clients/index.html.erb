@@ -1,7 +1,6 @@
 <h1>Клиенты</h1>
 <%= link_to 'Новый клиент', new_client_path,  class: 'btn btn-default', data: { modal: true } %>
 
-
 <table id="clients-datatable" data-source="<%= clients_path(format: :json) %>">
   <thead>
   <tr>
