@@ -76,6 +76,7 @@ GEM
       regexp_parser (~> 1.2)
       xpath (~> 3.2)
     character_set (1.2.0)
+    chartkick (3.0.2)
     childprocess (1.0.1)
       rake (< 13.0)
     chromedriver-helper (2.1.1)
@@ -319,6 +320,7 @@ DEPENDENCIES
   bootstrap-sass
   byebug
   capybara (>= 2.15)
+  chartkick
   chromedriver-helper
   client_side_validations
   client_side_validations-simple_form
