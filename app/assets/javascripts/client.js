@@ -19,9 +19,8 @@
 
 function datatables_init() {
     $('#clients-datatable').dataTable({
-        // processing: true,
         serverSide: true,
-
+        scrollX: true,
         search: {
             caseInsensitive: false
         },
@@ -41,10 +40,6 @@ function datatables_init() {
                 data: "email"
             }, {
                 data: "created_at"
-            }, {
-                data: "edit"
-            }, {
-                data: "delete"
             }
         ]
     });

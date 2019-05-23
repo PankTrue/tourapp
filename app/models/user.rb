@@ -5,7 +5,6 @@ class User < ApplicationRecord
   has_many :tours
 
 
-  has_many :tours, class_name: 'Tour', foreign_key: 'customer'
 
 
   devise :database_authenticatable, :registerable,

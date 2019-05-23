@@ -12,7 +12,7 @@ class TourDatatable < AjaxDatatablesRails::ActiveRecord
     @view_columns ||=
     {
       id: { source: "Tour.id", cond: :eq },
-      customer_id: { source: "Tour.customer_id" },
+      customer: { source: "Customer.name" },
       manager: { source: "User.name" },
       tour_operator: { source: "Tour.tour_operator" },
       appeal: { source: "Tour.appeal" },
@@ -58,7 +58,7 @@ class TourDatatable < AjaxDatatablesRails::ActiveRecord
     records.map do |record|
       {
         id: link_to(record.id, "/tours/#{record.id}", :class => 'btn btn-sm btn-default', data: { modal: true }),
-        customer_id: link_to("#{record.customer_id}", "/clients/#{record.customer_id}", :class => 'btn btn-sm btn-default', data: { modal: true }),
+        customer: link_to("#{record.customer.name} #{record.customer.surname}", "/clients/#{record.customer_id}", :class => 'btn btn-sm btn-default', data: { modal: true }),
         manager: "#{record.user.name} #{record.user.surname}",
         tour_operator: record.tour_operator,
         appeal: record.appeal,
