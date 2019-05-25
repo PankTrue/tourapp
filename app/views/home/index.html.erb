@@ -1,10 +1,22 @@
 
 <h2>chart</h2>
 
+<%= select 'home', 'select_manager', User.all.collect { |u| ["#{u.name} #{u.surname} #{u.pantronymic}" , u.id] },
+           {:include_blank => "Select user"}, {:class => 'form-control'} %>
+
+
+<div class="input-daterange input-group" id="datepicker">
+  <input type="text" class="input-sm form-control" name="start" />
+  <span class="input-group-addon">to</span>
+  <input type="text" class="input-sm form-control" name="end" />
+</div>
+
 <div id="chartContainer" style="height: 370px; width: 100%;"></div>
 
 
 <script>
+
+    $('.input-daterange').datepicker({});
 
   window.onload = function ()
   {

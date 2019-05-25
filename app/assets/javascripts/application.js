@@ -10,4 +10,5 @@
 //= require rails.validations
 //= require rails.validations.simple_form.bootstrap4
 //= require jquery.canvasjs.min.js
+//= require bootstrap-datepicker
 //= require_tree .

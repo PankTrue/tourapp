@@ -26,13 +26,10 @@ class HomeController < ApplicationController
       data << {x: date, y: count}
     end
 
-
-    # data = []
-    # 100.times do |i|
-    #   data << {x: DateTime.current + i.day, y: rand(100)}
-    # end
     render json: data
   end
+
+
 
 private
 
