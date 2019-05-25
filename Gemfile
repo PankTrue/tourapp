@@ -50,7 +50,6 @@ gem 'bootstrap-sass'
 gem 'font-awesome-rails'
 gem 'jquery-rails'
 
-gem 'bootstrap-sass'
 gem 'paper_trail'
 gem 'rails_admin'
 gem 'ajax-datatables-rails'

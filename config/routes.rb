@@ -2,7 +2,11 @@ Rails.application.routes.draw do
 
 
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
+
+
   get 'home/index'
+  post 'home/chart_0'
+
 
   resources :tours
   resources :clients
