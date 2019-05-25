@@ -12,20 +12,6 @@
 
       var chart_data0 = [];
 
-
-      var test = [
-          {x: new Date(2017, 6, 24), y: 31},
-          {x: new Date(2017, 6, 25), y: 31},
-          {x: new Date(2017, 6, 26), y: 29},
-          {x: new Date(2017, 6, 27), y: 29},
-          {x: new Date(2017, 6, 28), y: 31},
-          {x: new Date(2017, 6, 29), y: 30},
-          {x: new Date(2017, 6, 30), y: 29}
-      ];
-      console.log(test);
-      //
-      // console.log(chart_data0);
-
       var chart0 = new CanvasJS.Chart("chartContainer", {
           animationEnabled: true,
           title: {
@@ -62,9 +48,8 @@
           dataType: "json",
           success:function(data)
           {
-              console.log(data);
               addData(data,chart_data0);
-              console.log(chart_data0);
+              chart0.render();
           },
           error:function(data)
           {
@@ -74,63 +59,13 @@
 
 
 
-
-      chart0.render();
-
-
-
-
-      // var chart_data0 = [];
-      // var chart0 = new CanvasJS.Chart("chartContainer", {
-      //     animationEnabled: true,
-      //     title: {
-      //         text: "title"
-      //     },
-      //     axisX: {
-      //         valueFormatString: "DD MMM,YY"
-      //     },
-      //     legend: {
-      //         cursor: "pointer",
-      //         fontSize: 16,
-      //         itemclick: toggleDataSeries
-      //     },
-      //     data: [{
-      //         xValueType: "date",
-      //         // xValueFormatString: "YYYY-MM-DD",
-      //         name: "count",
-      //         dataPoints: [{x: new Date(2017,6,24), y: 31}]
-      //     }]
-      // });
-      //
-      //
-      // return $.ajax({
-      //     type: 'POST',
-      //     url: "/home/chart_0",
-      //     data: {id: 1},
-      //     dataType: "json",
-      //     success:function(data)
-      //     {
-      //         addData(data,chart_data0);
-      //         console.log(chart_data0);
-      //     },
-      //     error:function(data)
-      //     {
-      //         console.log('ERROR');
-      //     }
-      // });
-      //
-      //
-      // chart0.render();
-
-
   }
 
   function addData(data,result)
   {
       for (var i = 0; i < data.length; i++) {
-          date = data[i].x.split('-');
           result.push({
-              x: new Date(parseInt(date[0]),parseInt(date[1]),parseInt(date[2])),
+              x: new Date(data[i].x),
               y: data[i].y
           });
       }
