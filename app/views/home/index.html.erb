@@ -1,4 +1,58 @@
-<!--<div id="myfirstchart" style="height: 250px;"></div>-->
 
-<%#= content_tag :div, "", id: 'tour_char', data: {tours: tours_chart_data} %>
-<%= line_chart @tours %>
+<h2>chart</h2>
+
+<div id="chartContainer" style="height: 370px; width: 100%;"></div>
+
+
+<script>
+
+  window.onload = function ()
+  {
+
+      var chart = new CanvasJS.Chart("chartContainer", {
+          animationEnabled: true,
+          title: {
+              text: "title"
+          },
+          axisX: {
+              valueFormatString: "YYYY-MM-DD"
+          },
+          legend: {
+              cursor: "pointer",
+              fontSize: 16,
+              itemclick: toggleDataSeries
+          },
+          data: [{
+              xValueType: "date",
+              xValueFormatString: "YYYY-MM-DD",
+              name: "count",
+              dataPoints: function () {
+                  var request = $.ajax({
+                      url: "home/chart",
+                      method: "POST",
+                      data: { id : menuId },
+                      dataType: "json"
+                  });
+              }
+              <%#= raw @data.to_json %>
+          }]
+      });
+      chart.render();
+
+
+
+  }
+
+  function toggleDataSeries(e)
+  {
+      if (typeof(e.dataSeries.visible) === "undefined" || e.dataSeries.visible) {
+          e.dataSeries.visible = false;
+      }
+      else{
+          e.dataSeries.visible = true;
+      }
+      chart.render();
+  }
+
+</script>
+
