@@ -13,9 +13,6 @@ $(document).ready(function () {
 });
 
 
-
-
-
 function datatables_init() {
     $('#clients-datatable').dataTable({
         serverSide: true,
