@@ -3,104 +3,104 @@
 
 
   <div class="form-group">
-    <%= f.label :name, class: 'control-label' %><br>
+    <%= f.label :name, class: 'control-label' %>
     <%= f.text_field :name, class: 'form-control' %>
     <span class="help-block"></span>
   </div>
 
   <div class="form-group">
-    <%= f.label :surname, class: 'control-label' %><br>
+    <%= f.label :surname, class: 'control-label' %>
     <%= f.text_field :surname, class: 'form-control' %>
     <span class="help-block"></span>
   </div>
 
    <div class="form-group">
-    <%= f.label :pantronymic, class: 'control-label' %><br>
+    <%= f.label :pantronymic, class: 'control-label' %>
     <%= f.text_field :pantronymic, class: 'form-control' %>
     <span class="help-block"></span>
   </div>
 
    <div class="form-group">
-    <%= f.label :gender, class: 'control-label' %><br>
-    <%= f.select :gender, Client::Gender_List, class: 'form-control' %>
+    <%= f.label :gender, class: 'control-label' %>
+    <%= f.select :gender, Client::Gender_List, class: 'form-control custom-select' %>
     <span class="help-block"></span>
   </div>
 
    <div class="form-group">
-    <%= f.label :datebirth, class: 'control-label' %><br>
-    <%= f.date_select :datebirth, class: 'form-control' %>
+    <%= f.label :datebirth, class: 'control-label' %>
+     <input type="text" class="datepicker form-control" name="client[datebirth]" data-provide='datepicker' data-date-format="dd/mm/yyyy" data-language="ru">
     <span class="help-block"></span>
   </div>
 
    <div class="form-group">
-    <%= f.label :phone, class: 'control-label' %><br>
+    <%= f.label :phone, class: 'control-label' %>
     <%= f.text_field :phone, class: 'form-control' %>
     <span class="help-block"></span>
   </div>
 
    <div class="form-group">
-    <%= f.label :additional_phone, class: 'control-label' %><br>
+    <%= f.label :additional_phone, class: 'control-label' %>
     <%= f.text_field :additional_phone, class: 'form-control' %>
     <span class="help-block"></span>
   </div>
 
    <div class="form-group">
-    <%= f.label :email, class: 'control-label' %><br>
+    <%= f.label :email, class: 'control-label' %>
     <%= f.text_field :email, class: 'form-control' %>
     <span class="help-block"></span>
   </div>
 
   <div class="form-group">
-    <%= f.label :main_passport_series, class: 'control-label' %><br>
+    <%= f.label :main_passport_series, class: 'control-label' %>
     <%= f.number_field :main_passport_series, class: 'form-control' %>
     <span class="help-block"></span>
   </div>
 
    <div class="form-group">
-    <%= f.label :main_passport_number, class: 'control-label' %><br>
+    <%= f.label :main_passport_number, class: 'control-label' %>
     <%= f.number_field :main_passport_number, class: 'form-control' %>
     <span class="help-block"></span>
   </div>
 
    <div class="form-group">
-    <%= f.label :main_passport_get_by, class: 'control-label' %><br>
+    <%= f.label :main_passport_get_by, class: 'control-label' %>
     <%= f.text_field :main_passport_get_by, class: 'form-control' %>
     <span class="help-block"></span>
   </div>
 
    <div class="form-group">
-    <%= f.label :main_passport_date_given, class: 'control-label' %><br>
-    <%= f.date_select :main_passport_date_given, class: 'form-control' %>
-    <span class="help-block"></span>
+    <%= f.label :main_passport_date_given, class: 'control-label' %>
+     <input type="text" class="datepicker form-control" name="client[main_passport_date_given]" data-provide='datepicker' data-date-format="dd/mm/yyyy" data-language="ru">
+     <span class="help-block"></span>
   </div>
 
    <div class="form-group">
-    <%= f.label :international_passport_series, class: 'control-label' %><br>
+    <%= f.label :international_passport_series, class: 'control-label' %>
     <%= f.number_field :international_passport_series, class: 'form-control' %>
     <span class="help-block"></span>
   </div>
 
    <div class="form-group">
-    <%= f.label :international_passport_number, class: 'control-label' %><br>
+    <%= f.label :international_passport_number, class: 'control-label' %>
     <%= f.number_field :international_passport_number, class: 'form-control' %>
     <span class="help-block"></span>
   </div>
 
     <div class="form-group">
-    <%= f.label :international_passport_get_by, class: 'control-label' %><br>
+    <%= f.label :international_passport_get_by, class: 'control-label' %>
     <%= f.text_field :international_passport_get_by, class: 'form-control' %>
     <span class="help-block"></span>
   </div>
 
   <div class="form-group">
-    <%= f.label :international_passport_date_given, class: 'control-label' %><br>
-    <%= f.date_select :international_passport_date_given, class: 'form-control' %>
+    <%= f.label :international_passport_date_given, class: 'control-label' %>
+    <input type="text" class="datepicker form-control" name="client[international_passport_date_given]" data-provide='datepicker' data-date-format="dd/mm/yyyy" data-language="ru">
     <span class="help-block"></span>
   </div>
 
   <div class="form-group">
-    <%= f.label :international_passport_date_end, class: 'control-label' %><br>
-    <%= f.date_select :international_passport_date_end, class: 'form-control' %>
+    <%= f.label :international_passport_date_end, class: 'control-label' %>
+    <input type="text" class="datepicker form-control" name="client[international_passport_date_end]" data-provide='datepicker' data-date-format="dd/mm/yyyy" data-language="ru">
     <span class="help-block"></span>
   </div>
 

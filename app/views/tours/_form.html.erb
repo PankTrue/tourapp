@@ -1,4 +1,4 @@
-<%= simple_form_for(@tour, html: { class: 'form-inline' }, validate: true) do |f| %>
+<%= simple_form_for(@tour, validate: true) do |f| %>
   <%= f.error_notification %>
 
 
@@ -21,196 +21,197 @@
   </div>
 
 
-  <div class="field">
+  <div class="form-group">
     <%= f.label :customer_id %>
     <%= f.input_field :customer_id, :as => :select, selected: @tour.new_record? ? '' : @tour.customer_id,
                       collection: @tour.new_record? ? ['Select customer'] : { :"#{@tour.customer.name} #{@tour.customer.surname} #{@tour.customer.pantronymic}" => @tour.customer_id },
-                      class: 'select2', style: 'width: 250px;' %>
+                      class: 'select2 form-control', style: 'width: 250px;' %>
   </div>
 
-  <div class="field">
-    <%= f.label :tour_operator %>
-    <%= f.text_field :tour_operator %>
+  <div class="form-group">
+    <%= f.label :tour_operator %> <br>
+    <%= f.text_field :tour_operator, class: 'form-control' %>
+    <span class="help-block"></span>
   </div>
 
-  <div class="field">
+  <div class="form-group">
     <%= f.label :appeal %>
-    <%= f.text_field :appeal %>
+    <%= f.text_field :appeal, class: 'form-control' %>
   </div>
 
-  <div class="field">
-    <%= f.label :advertising_source %>
-    <%= f.text_field :advertising_source %>
+  <div class="form-group">
+    <%= f.label :advertising_source%>
+    <%= f.text_field :advertising_source, class: 'form-control' %>
   </div>
 
-  <div class="field">
+  <div class="form-group">
     <%= f.label :currency %>
-    <%= f.text_field :currency %>
+    <%= f.text_field :currency, class: 'form-control' %>
   </div>
 
-  <div class="field">
+  <div class="form-group">
     <%= f.label :passport_type %>
     <%= f.check_box :passport_type %>
   </div>
 
-  <div class="field">
+  <div class="form-group">
     <%= f.label :office_city %>
-    <%= f.text_field :office_city %>
+    <%= f.text_field :office_city, class: 'form-control' %>
   </div>
 
-  <div class="field">
+  <div class="form-group">
     <%= f.label :agency_represented %>
-    <%= f.text_field :agency_represented %>
+    <%= f.text_field :agency_represented, class: 'form-control' %>
   </div>
 
-  <div class="field">
+  <div class="form-group">
     <%= f.label :number_person %>
-    <%= f.number_field :number_person %>
+    <%= f.number_field :number_person, class: 'form-control' %>
   </div>
 
-  <div class="field">
+  <div class="form-group">
     <%= f.label :tour_country %>
-    <%= f.text_field :tour_country %>
+    <%= f.text_field :tour_country, class: 'form-control' %>
   </div>
 
-  <div class="field">
+  <div class="form-group">
     <%= f.label :tour_city %>
-    <%= f.text_field :tour_city %>
+    <%= f.text_field :tour_city, class: 'form-control' %>
   </div>
 
-  <div class="field">
+  <div class="form-group">
     <%= f.label :date_start %>
-    <%= f.date_select :date_start %>
+    <input type="text" class="datepicker form-control" name="tour[date_start]" data-provide='datepicker' data-date-format="dd/mm/yyyy">
   </div>
 
-  <div class="field">
+  <div class="form-group">
     <%= f.label :date_end %>
-    <%= f.date_select :date_end %>
+    <input type="text" class="datepicker form-control" name="tour[date_end]" data-provide='datepicker' data-date-format="dd/mm/yyyy">
   </div>
 
-  <div class="field">
+  <div class="form-group">
     <%= f.label :hotel_name %>
-    <%= f.text_field :hotel_name %>
+    <%= f.text_field :hotel_name, class: 'form-control' %>
   </div>
 
-  <div class="field">
+  <div class="form-group">
     <%= f.label :hotel_start %>
-    <%= f.date_select :hotel_start %>
+    <input type="text" class="datepicker form-control" name="tour[hotel_start]" data-provide='datepicker' data-date-format="dd/mm/yyyy">
   </div>
 
-  <div class="field">
+  <div class="form-group">
     <%= f.label :hotel_end %>
-    <%= f.date_select :hotel_end %>
+    <input type="text" class="datepicker form-control" name="tour[hotel_end]" data-provide='datepicker' data-date-format="dd/mm/yyyy">
   </div>
 
-  <div class="field">
+  <div class="form-group">
     <%= f.label :room_category %>
-    <%= f.text_field :room_category %>
+    <%= f.text_field :room_category, class: 'form-control' %>
   </div>
 
-  <div class="field">
+  <div class="form-group">
     <%= f.label :type_room %>
-    <%= f.text_field :type_room %>
+    <%= f.text_field :type_room, class: 'form-control' %>
   </div>
 
-  <div class="field">
+  <div class="form-group">
     <%= f.label :type_food %>
-    <%= f.text_field :type_food %>
+    <%= f.text_field :type_food, class: 'form-control' %>
   </div>
 
-  <div class="field">
+  <div class="form-group">
     <%= f.label :route_there %>
-    <%= f.text_field :route_there %>
+    <%= f.text_field :route_there, class: 'form-control' %>
   </div>
 
-  <div class="field">
+  <div class="form-group">
     <%= f.label :route_back %>
-    <%= f.text_field :route_back %>
+    <%= f.text_field :route_back, class: 'form-control' %>
   </div>
 
-  <div class="field">
+  <div class="form-group">
     <%= f.label :flight_number %>
-    <%= f.number_field :flight_number %>
+    <%= f.number_field :flight_number, class: 'form-control' %>
   </div>
 
-  <div class="field">
+  <div class="form-group">
     <%= f.label :fly_type %>
-    <%= f.text_field :fly_type %>
+    <%= f.text_field :fly_type, class: 'form-control' %>
   </div>
 
-  <div class="field">
+  <div class="form-group">
     <%= f.label :type_of_transport_there %>
-    <%= f.text_field :type_of_transport_there %>
+    <%= f.text_field :type_of_transport_there, class: 'form-control' %>
   </div>
 
-  <div class="field">
+  <div class="form-group">
     <%= f.label :type_of_transport_back %>
-    <%= f.text_field :type_of_transport_back %>
+    <%= f.text_field :type_of_transport_back, class: 'form-control' %>
   </div>
 
-  <div class="field">
+  <div class="form-group">
     <%= f.label :flight_type_there %>
-    <%= f.text_field :flight_type_there %>
+    <%= f.text_field :flight_type_there, class: 'form-control' %>
   </div>
 
-  <div class="field">
+  <div class="form-group">
     <%= f.label :flight_type_back %>
-    <%= f.text_field :flight_type_back %>
+    <%= f.text_field :flight_type_back, class: 'form-control' %>
   </div>
 
-  <div class="field">
+  <div class="form-group">
     <%= f.label :flight_back_class %>
-    <%= f.text_field :flight_back_class %>
+    <%= f.text_field :flight_back_class, class: 'form-control' %>
   </div>
 
-  <div class="field">
+  <div class="form-group">
     <%= f.label :number_flight_back %>
-    <%= f.number_field :number_flight_back %>
+    <%= f.number_field :number_flight_back, class: 'form-control' %>
   </div>
 
-  <div class="field">
+  <div class="form-group">
     <%= f.label :transfer_route %>
-    <%= f.text_field :transfer_route %>
+    <%= f.text_field :transfer_route, class: 'form-control' %>
   </div>
 
-  <div class="field">
+  <div class="form-group">
     <%= f.label :transfer_type %>
-    <%= f.text_field :transfer_type %>
+    <%= f.text_field :transfer_type, class: 'form-control' %>
   </div>
 
-  <div class="field">
+  <div class="form-group">
     <%= f.label :excursion_program %>
-    <%= f.text_field :excursion_program %>
+    <%= f.text_field :excursion_program, class: 'form-control' %>
   </div>
 
-  <div class="field">
+  <div class="form-group">
     <%= f.label :additional_service %>
-    <%= f.text_field :additional_service %>
+    <%= f.text_field :additional_service, class: 'form-control' %>
   </div>
 
-  <div class="field">
+  <div class="form-group">
     <%= f.label :cost_tour %>
-    <%= f.number_field :cost_tour %>
+    <%= f.number_field :cost_tour, class: 'form-control' %>
   </div>
 
-  <div class="field">
+  <div class="form-group">
     <%= f.label :prepaid %>
-    <%= f.number_field :prepaid %>
+    <%= f.number_field :prepaid, class: 'form-control' %>
   </div>
 
-  <div class="field">
+  <div class="form-group">
     <%= f.label :voluntary_insurance %>
-    <%= f.text_field :voluntary_insurance %>
+    <%= f.text_field :voluntary_insurance, class: 'form-control' %>
   </div>
 
-  <div class="field">
+  <div class="form-group">
     <%= f.label :prihodnik_date %>
-    <%= f.date_select :prihodnik_date %>
+    <input type="text" class="datepicker form-control" name="tour[prihodnik_date]" data-provide='datepicker' data-date-format="dd/mm/yyyy">
   </div>
 
-  <div class="field">
+  <div class="form-group">
     <%= f.label :prihodnik_prepaid %>
-    <%= f.number_field :prihodnik_prepaid %>
+    <%= f.number_field :prihodnik_prepaid, class: 'form-control' %>
   </div>
 
   <div class="actions">

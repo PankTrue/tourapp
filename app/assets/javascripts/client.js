@@ -16,7 +16,6 @@ $(document).ready(function () {
 
 
 
-
 function datatables_init() {
     $('#clients-datatable').dataTable({
         serverSide: true,
@@ -63,7 +62,7 @@ function select2_init(element) {
             processResults: function(data, page) {
                 var res = {
                     results: $.map( data, function(client, i) {
-                        return { id: client.id, text: client.name + ' ' + client.surname }
+                        return { id: client.id, text: client.name + ' ' + client.surname + ' ' + client.pantronymic}
                     } )
                 }
                 return res;
