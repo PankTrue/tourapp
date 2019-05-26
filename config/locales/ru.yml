@@ -1,8 +1,7 @@
 ---
 ru:
-  simple_form:
-  show:
-    labels:
+  activerecord:
+    attributes:
       client:
         name: 'Имя'
         surname: 'Фамилия'
@@ -10,7 +9,7 @@ ru:
         gender: 'Пол'
         datebirth: 'День рождения'
         phone: 'Телефон'
-  activerecord:
+        additional_phone: '...'
     errors:
       messages:
         record_invalid: 'Возникли ошибки: %{errors}'
