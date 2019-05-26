@@ -1,10 +1,23 @@
 <p id="notice"><%= notice %></p>
 
+
+
 <h2>Tour</h2>
+
+<%= link_to 'Edit', edit_tour_path(@tour), class: 'btn btn-sm btn-default' %>
+<%= link_to 'Back', tours_path, class: 'btn btn-sm btn-default' %>
+
 
 <p>
   <strong>Customer:</strong>
-  <%= @tour.customer_id %>
+  <%= "#{@tour.customer.name} #{@tour.customer.surname} #{@tour.customer.pantronymic}" %>
+</p>
+
+<p>
+  <strong>Clients:</strong>
+  <% @tour.clients.each do |c| %>
+  <li><%= "#{c.name} #{c.surname} #{c.pantronymic}" %></li>
+  <% end %>
 </p>
 
 <p>
@@ -197,5 +210,4 @@
   <%= @tour.prihodnik_prepaid %>
 </p>
 
-<%= link_to 'Edit', edit_tour_path(@tour) %> |
-<%= link_to 'Back', tours_path %>
+
