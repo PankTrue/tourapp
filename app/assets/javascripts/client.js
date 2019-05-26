@@ -1,16 +1,16 @@
 
-    $(document).ready(function () {
+$(document).ready(function () {
 
-        datatables_init();
+    datatables_init();
 
-        select2_init($(".select2"));
+    select2_init($(".select2"));
 
-        $('body').bind("cocoon:after-insert",function (e, inserted_item) {
-            select=$(inserted_item).find(".select2");
+    $('body').bind("cocoon:after-insert",function (e, inserted_item) {
+        select=$(inserted_item).find(".select2");
 
-            select2_init(select);
-        })
-    });
+        select2_init(select);
+    })
+});
 
 
 
