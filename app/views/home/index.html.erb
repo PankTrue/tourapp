@@ -1,28 +1,64 @@
 <h2>chart</h2>
 
 <%= select 'home', 'select_manager', User.all.collect { |u| ["#{u.name} #{u.surname} #{u.pantronymic}" , u.id] },
-           {:include_blank => "Select user"}, {:class => 'form-control'} %>
+           {:include_blank => "Select user"}, {:class => 'form-control', :id => 'chart0-select-manager'} %>
 
 
-<div class="input-daterange input-group" id="datepicker">
-  <input type="text" class="input-sm form-control" name="start" />
+<div class="input-daterange input-group" id="chart0-select-range-date">
+  <input type="text" id="chart0-date-start" class="input-sm form-control" name="start"
+         value="<%= (Date.today - 1.month).strftime('%d.%m.%Y') %>"/>
   <span class="input-group-addon">to</span>
-  <input type="text" class="input-sm form-control" name="end" />
+  <input type="text" id="chart0-date-end" class="input-sm form-control" name="end"
+         value="<%= Date.today.strftime('%d.%m.%Y') %>"/>
 </div>
 
-<div id="chartContainer" style="height: 370px; width: 100%;"></div>
+<div id="chartContainer" style="height: 370px; width: 100%; z-index: 1"></div>
 
 
 <script>
 
-    $('.input-daterange').datepicker({});
+
 
   window.onload = function ()
   {
 
-
+      //start chart0
       var chart_data0 = [];
+      var chart0_date_start = '';
+      var chart0_date_end   = '';
+      var chart0_manager_id = '1';
 
+
+      $('#chart0-date-start').datepicker({ language: 'ru', endDate: '0', autoclose: true, zIndexOffset: 1000 });
+      $('#chart0-date-end').datepicker({ language: 'ru', endDate: '0', autoclose: true, zIndexOffset: 1000 });
+
+
+      $('.input-daterange').change(function()
+      {
+          chart0_date_start = $('#chart0-date-start').val();
+          chart0_date_end   = $('#chart0-date-end').val();
+
+          console.log('date_start: ' + chart0_date_start);
+          console.log('date_end: ' + chart0_date_end);
+
+
+          chart0_ajax();
+      });
+
+      $('#chart0-select-manager').change(function () {
+          chart0_manager_id = $('#chart0-select-manager').val();
+
+          console.log('manager: ' + chart0_manager_id);
+
+          chart0_ajax();
+
+      });
+
+
+      chart0_ajax();
+      
+      
+  function create_chart0() {
       var chart0 = new CanvasJS.Chart("chartContainer", {
           animationEnabled: true,
           title: {
@@ -49,25 +85,28 @@
               showInLegend: true,
               dataPoints: chart_data0
           }]
-      });
-
-
-       $.ajax({
-          type: 'POST',
-          url: "/home/chart_0",
-          data: {id: 1},
-          dataType: "json",
-          success:function(data)
-          {
-              addData(data,chart_data0);
-              chart0.render();
-          },
-          error:function(data)
-          {
-              console.log('ERROR');
-          }
-      });
-
+      }).render();
+  }
+      
+  function chart0_ajax() {
+    $.ajax({
+        type: 'POST',
+        url: "/home/chart_0",
+        data: {date_start: chart0_date_start, date_end: chart0_date_end, manager: chart0_manager_id},
+        dataType: "json",
+        success:function(data)
+        {
+            chart_data0 = [];
+            addData(data,chart_data0);
+            create_chart0();
+        },
+        error:function(data)
+        {
+            console.log('ERROR');
+        }
+    });
+  }
+      //end chart0
 
 
   }

@@ -10,7 +10,7 @@ class Tour < ApplicationRecord
 
   belongs_to :user
 
-  has_and_belongs_to_many :clients
+  has_and_belongs_to_many :clients, :inverse_of => :tours
 
   accepts_nested_attributes_for :clients,
                                 allow_destroy: true

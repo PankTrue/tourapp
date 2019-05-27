@@ -22,7 +22,8 @@ class HomeController < ApplicationController
 
     data = []
 
-    Tour.period_count_array.each do |date, count|
+    Tour.period_count_array(params[:date_start].blank? ? (Date.today-1.month).beginning_of_day : params[:date_start],
+                            params[:date_end].blank? ? Date.today.end_of_day : params[:date_end]).each do |date, count|
       data << {x: date, y: count}
     end
 

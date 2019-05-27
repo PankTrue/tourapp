@@ -46,6 +46,7 @@ gem "twitter-bootstrap-rails"
 
 
 gem 'devise', '~> 4.2'
+gem 'devise-i18n'
 gem 'bootstrap-sass'
 gem 'font-awesome-rails'
 gem 'jquery-rails'
