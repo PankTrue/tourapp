@@ -17,4 +17,5 @@ class Client < ApplicationRecord
   validates :surname, presence: true
   validates :pantronymic, presence: true
 
+
 end
