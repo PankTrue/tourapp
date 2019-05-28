@@ -51,13 +51,21 @@ class ToursController < ApplicationController
   end
 
   def update
-    respond_to do |format|
-      if @tour.update(tour_params)
-        format.html { redirect_to @tour, notice: 'Tour was successfully updated.' }
-        format.json { render :show, status: :ok, location: @tour }
-      else
-        format.html { render :edit }
-        format.json { render json: @tour.errors, status: :unprocessable_entity }
+    ActiveRecord::Base.transaction do
+      begin
+        @tour.update(tour_params)
+        tours_clients_params.values.each do |value|
+          raise ActiveRecord::Rollback unless Tour::is_clients_uniq value.values
+          value.values.each do |v|
+            Clients_Tour.update(client_id: v[:id], tour_id: @tour.id)
+          end
+        end
+      rescue
+        is_ok = false
+        raise ActiveRecord::Rollback
+      ensure
+        is_ok ? (redirect_to tours_path, success: 'Запись была успешно изменена.')
+            : (redirect_to tours_path, danger: 'Не удалось изменить запись.')
       end
     end
   end
@@ -70,7 +78,7 @@ class ToursController < ApplicationController
     end
   end
 
-  private
+private
 
     def set_tour
       @tour = Tour.find(params[:id])
