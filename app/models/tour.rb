@@ -19,17 +19,17 @@ class Tour < ApplicationRecord
 
 
 
-  #TODO: fix validate clients (problem becouse custome creating client_tour in tour_controller)
-  validate :no_duplicate_clients
+
+
 
 private
 
-  def no_duplicate_clients
-    64.times {|i| print '-'}; puts ''
-    puts self.client_id
-    64.times {|i| print '-'}
-    unless self.clients.map(&:id).uniq
-      errors.add(:clients, "- can not be 2 of the same clients")
-    end
+  def Tour::is_clients_uniq client_ids
+    client_ids.map{|v| v[:id]}.uniq!.nil? ? true : false
   end
 end
+
+
+
+
+

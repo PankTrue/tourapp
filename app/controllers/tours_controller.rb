@@ -30,15 +30,22 @@ class ToursController < ApplicationController
     @tour = Tour.new(tour_params)
     @tour.user_id = current_user.id
 
-    respond_to do |format|
-      if @tour.save
-        tours_clients_params.values.each { |value| value.values.each {|v| Clients_Tour.create(client_id: v[:id], tour_id: @tour.id)} }
-
-        format.html { redirect_to @tour, success: 'Tour was successfully created.' }
-        format.json { render :show, status: :ok, location: @tour }
-      else
-        format.html { render :edit }
-        format.json { render json: @tour.errors, status: :unprocessable_entity }
+    is_ok = true
+    ActiveRecord::Base.transaction do
+      begin
+        @tour.save!
+        tours_clients_params.values.each do |value|
+          raise ActiveRecord::Rollback unless Tour::is_clients_uniq value.values
+          value.values.each do |v|
+            Clients_Tour.create(client_id: v[:id], tour_id: @tour.id)
+          end
+        end
+      rescue
+        is_ok = false
+        raise ActiveRecord::Rollback
+      ensure
+        is_ok ? (redirect_to tours_path, success: 'Запись была успешно создана.')
+              : (redirect_to tours_path, danger: 'Не удалось создать запись.')
       end
     end
   end
