@@ -71,7 +71,7 @@
 
   <div class="form-group">
     <%= f.label :tour_country %> <br>
-    <%= f.select :tour_country,   ISO3166::Country.all_translated('RU'), class: 'select2-country' %>
+    <%= f.select :tour_country, ISO3166::Country.all_translated('RU'), class: 'select2-country' %>
   </div>
 
   <div class="form-group">
@@ -218,21 +218,3 @@
     <%= f.submit %>
   </div>
 <% end %>
-
-
-
-<script type="text/javascript" charset="utf-8">
-  /*
-    var countryes =
-<%#= raw ISO3166::Country.all_translated('RU').to_json %>
-
-
-    $('#select2-country').select2({
-        formatSelection: {},
-        formatResult: format,
-        data: $.map(countryes, function(country) {
-            console.log({id: country, text: country });
-        })
-    });
-    */
-</script>

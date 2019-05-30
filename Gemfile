@@ -65,5 +65,4 @@ gem 'client_side_validations'
 gem 'client_side_validations-simple_form'
 gem 'bootstrap-datepicker-rails'
 gem "font-awesome-rails"
-gem 'country_select'
 gem 'countries'
