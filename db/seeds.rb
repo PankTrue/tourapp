@@ -1,7 +1,7 @@
 main_passport_get_by = ['МВД по пидорaшкe']
 international_passport_get_by = main_passport_get_by
 
-1000.times do
+10000.times do
   Client.create( name: Faker::Name.first_name ,
                  surname: Faker::Name.last_name,
                  pantronymic: Faker::Name.first_name_men + 'ович',

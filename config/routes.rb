@@ -4,8 +4,8 @@ Rails.application.routes.draw do
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
 
 
-  get 'home/index'
-  post 'home/chart_0'
+  post 'home/chart0'
+  post 'home/chart1'
 
 
   resources :tours

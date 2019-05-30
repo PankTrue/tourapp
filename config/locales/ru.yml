@@ -22,7 +22,7 @@ ru:
         international_passport_date_end:
         user_id:
       tour:
-        customer_id:
+        customer_id: 'хуястомер'
         user_id:
         tour_operator:
         appeal:

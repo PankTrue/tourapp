@@ -1,4 +1,4 @@
-<h2>chart</h2>
+<h2>chart0</h2>
 
 <%= select 'home', 'manager', User.all.collect { |u| ["#{u.name} #{u.surname} #{u.pantronymic}" , u.id] },
            {}, {:class => 'form-control', :id => 'chart0-select-manager'} %>
@@ -12,127 +12,18 @@
          value="<%= Date.today.strftime('%d.%m.%Y') %>"/>
 </div>
 
-<div id="chartContainer" style="height: 370px; width: 100%; z-index: 1"></div>
+<div id="chart0_container" style="height: 370px; width: 100%; z-index: 1"></div>
 
 
-<script>
+<h2>chart1</h2>
 
 
+<div class="input-daterange input-group" id="chart1-select-range-date">
+  <input type="text" id="chart1-date-start" class="input-sm form-control" name="start"
+         value="<%= (Date.today - 1.month).strftime('%d.%m.%Y') %>"/>
+  <span class="input-group-addon">to</span>
+  <input type="text" id="chart1-date-end" class="input-sm form-control" name="end"
+         value="<%= Date.today.strftime('%d.%m.%Y') %>"/>
+</div>
 
-  window.onload = function ()
-  {
-
-      //start chart0
-      var chart_data0 = [];
-      var chart0_date_start = '';
-      var chart0_date_end   = '';
-      var chart0_manager_id = '1';
-
-
-      $('#chart0-date-start').datepicker({ language: 'ru', endDate: '0', autoclose: true, zIndexOffset: 1000 });
-      $('#chart0-date-end').datepicker({ language: 'ru', endDate: '0', autoclose: true, zIndexOffset: 1000 });
-
-
-      $('.input-daterange').change(function()
-      {
-          chart0_date_start = $('#chart0-date-start').val();
-          chart0_date_end   = $('#chart0-date-end').val();
-
-          console.log('date_start: ' + chart0_date_start);
-          console.log('date_end: ' + chart0_date_end);
-
-
-          chart0_ajax();
-      });
-
-      $('#chart0-select-manager').change(function () {
-          chart0_manager_id = $('#chart0-select-manager').val();
-
-          console.log('manager: ' + chart0_manager_id);
-
-          chart0_ajax();
-
-      });
-
-
-      chart0_ajax();
-      
-      
-  function create_chart0() {
-      var chart0 = new CanvasJS.Chart("chartContainer", {
-          animationEnabled: true,
-          title: {
-              text: "Daily High Temperature at Different Beaches"
-          },
-          axisX: {
-              valueFormatString: "DD MMM,YY"
-          },
-          axisY: {
-              title: "Count",
-              includeZero: false,
-          },
-          legend: {
-              cursor: "pointer",
-              fontSize: 16,
-              itemclick: toggleDataSeries
-          },
-          toolTip: {
-              shared: true
-          },
-          data: [{
-              name: "Myrtle Beach",
-              type: "spline",
-              showInLegend: true,
-              dataPoints: chart_data0
-          }]
-      }).render();
-  }
-      
-  function chart0_ajax() {
-    $.ajax({
-        type: 'POST',
-        url: "/home/chart_0",
-        data: {date_start: chart0_date_start, date_end: chart0_date_end, manager: chart0_manager_id},
-        dataType: "json",
-        success:function(data)
-        {
-            chart_data0 = [];
-            addData(data,chart_data0);
-            create_chart0();
-        },
-        error:function(data)
-        {
-            console.log('ERROR');
-        }
-    });
-  }
-      //end chart0
-
-
-  }
-
-  function addData(data,result)
-  {
-      for (var i = 0; i < data.length; i++) {
-          result.push({
-              x: new Date(data[i].x),
-              y: data[i].y
-          });
-      }
-  }
-
-
-
-  function toggleDataSeries(e)
-  {
-      if (typeof(e.dataSeries.visible) === "undefined" || e.dataSeries.visible) {
-          e.dataSeries.visible = false;
-      }
-      else{
-          e.dataSeries.visible = true;
-      }
-      chart0.render();
-  }
-
-</script>
-
+<div id="chart1_container" style="height: 370px; width: 100%; z-index: 1"></div>
