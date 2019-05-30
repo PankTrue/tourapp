@@ -25,24 +25,30 @@ class ClientsController < ApplicationController
     respond_modal_with @client
   end
 
-
   def create
     @client = Client.new(client_params)
     @client.user_id = current_user.id
-    @client.save!
-    respond_modal_with @client, location: clients_path
+    if @client.save
+      redirect_to @client, success: 'Клиент успешно создан'
+    else
+      render :new, danger: 'Не удалось создать запись.'
+    end
   end
-
 
   def update
-    @client.update!(client_params)
-    respond_modal_with @client, location: clients_path
+    if @client.update(client_params)
+      redirect_to @client, success: 'Клиент успешно отредактирован'
+    else
+      render :edit, danger: 'Не удалось изменить запись.'
+    end
   end
 
-
   def destroy
-    @client.destroy!
-    respond_modal_with @client, location: clients_path
+    if @client.destroy
+      redirect_to clients_path, success: 'Запись успешно удалена.'
+    else
+      redirect_to clients_path, success: 'Nе удалось удалить запись.'
+    end
   end
 
   def autocomplite

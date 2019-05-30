@@ -30,39 +30,28 @@ class ToursController < ApplicationController
     @tour = Tour.new(tour_params)
     @tour.user_id = current_user.id
 
-    if @tour.save!
+    if @tour.save
       redirect_to tours_path, success: 'Запись была успешно создана.'
     else
-      render :new, danger: 'Не удалось создать запись.'
+      redirect_to new_tour_path, danger: 'Не удалось создать запись.'
     end
   end
 
   def update
-    ActiveRecord::Base.transaction do
-      begin
-        @tour.update(tour_params)
-        tours_clients_params.values.each do |value|
-          raise ActiveRecord::Rollback unless Tour::is_clients_uniq value.values
-          value.values.each do |v|
-            Clients_Tour.update(client_id: v[:id], tour_id: @tour.id)
-          end
-        end
-      rescue
-        is_ok = false
-        raise ActiveRecord::Rollback
-      ensure
-        is_ok ? (redirect_to tours_path, success: 'Запись была успешно изменена.')
-            : (redirect_to tours_path, danger: 'Не удалось изменить запись.')
-      end
+    if @tour.update(tour_params)
+      redirect_to @tour, success: 'Запись была успешно изменена.'
+    else
+      render :edit, danger: 'Не удалось изменить запись.'
     end
   end
 
   def destroy
-    @tour.destroy
-    respond_to do |format|
-      format.html { redirect_to tours_url, notice: 'Tour was successfully destroyed.' }
-      format.json { head :no_content }
+    if @tour.destroy
+      redirect_to tours_url, success: 'Tour was successfully destroyed.'
+    else
+      redirect_to tours_url, danger: 'Tour dosnt destroy'
     end
+
   end
 
 private
@@ -85,9 +74,4 @@ private
                                    clients_attributes: [:id]
       )
     end
-
-  def tours_clients_params
-    params.require(:tour).permit()
-  end
-
 end

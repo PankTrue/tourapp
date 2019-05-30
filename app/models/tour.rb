@@ -19,17 +19,19 @@ class Tour < ApplicationRecord
 
   validates :customer_id, presence: true
 
+  validate :clients_uniq
+
 
   def clients_attributes=(attributes)
     self.clients = attributes.values.map { |item| Client.find(item['id']) }
     super(attributes)
   end
+
 private
 
+  def clients_uniq
+    errors.add(:clients, "UNIQUE SUKA") unless self.client_ids.uniq!.nil?
 
-
-  def Tour::is_clients_uniq client_ids
-    client_ids.map{|v| v[:id]}.uniq!.nil? ? true : false
   end
 end
 
