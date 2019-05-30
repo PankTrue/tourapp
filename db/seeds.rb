@@ -4,7 +4,7 @@ international_passport_get_by = main_passport_get_by
 1000.times do
   Client.create( name: Faker::Name.first_name ,
                  surname: Faker::Name.last_name,
-                 pantronymic: Faker::Name.first_name + 'ович',
+                 pantronymic: Faker::Name.first_name_men + 'ович',
                  gender: rand(2) ? 'Мужской' : 'Женский',
                  datebirth: rand(Date.civil(1950, 1, 1)..Date.civil(2000, 12, 31)),
                  phone: '+7' + rand.to_s[2..11],

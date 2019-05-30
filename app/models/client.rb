@@ -19,4 +19,14 @@ class Client < ApplicationRecord
   validates :pantronymic, presence: true
 
 
+  validate :names_upcase
+
+
+
+private
+  def names_upcase
+    self.name.upcase!
+    self.surname.upcase!
+    self.pantronymic.upcase!
+  end
 end
