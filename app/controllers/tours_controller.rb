@@ -30,23 +30,10 @@ class ToursController < ApplicationController
     @tour = Tour.new(tour_params)
     @tour.user_id = current_user.id
 
-    is_ok = true
-    ActiveRecord::Base.transaction do
-      begin
-        @tour.save!
-        tours_clients_params.values.each do |value|
-          raise ActiveRecord::Rollback unless Tour::is_clients_uniq value.values
-          value.values.each do |v|
-            Clients_Tour.create(client_id: v[:id], tour_id: @tour.id)
-          end
-        end
-      rescue
-        is_ok = false
-        raise ActiveRecord::Rollback
-      ensure
-        is_ok ? (redirect_to tours_path, success: 'Запись была успешно создана.')
-              : (redirect_to tours_path, danger: 'Не удалось создать запись.')
-      end
+    if @tour.save!
+      redirect_to tours_path, success: 'Запись была успешно создана.'
+    else
+      render :new, danger: 'Не удалось создать запись.'
     end
   end
 
@@ -94,12 +81,13 @@ private
                                    :flight_type_there, :flight_type_back, :flight_back_class,
                                    :number_flight_back, :transfer_route, :transfer_type,
                                    :excursion_program, :additional_service, :cost_tour, :prepaid,
-                                   :voluntary_insurance, :prihodnik_date, :prihodnik_prepaid
+                                   :voluntary_insurance, :prihodnik_date, :prihodnik_prepaid,
+                                   clients_attributes: [:id]
       )
     end
 
   def tours_clients_params
-    params.require(:tour).permit(clients_attributes: [:id])
+    params.require(:tour).permit()
   end
 
 end

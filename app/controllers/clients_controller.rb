@@ -49,9 +49,10 @@ class ClientsController < ApplicationController
     if(params[:q]).blank?
       @clients = Client.all.limit(25)
     else
-      @clients = Client.where('lower(name) LIKE ?', "%#{params[:q].downcase}%")
-              .or(Client.where('lower(surname) LIKE ?', "%#{params[:q].downcase}%"))
-              .order('name asc').limit(25)
+      @clients = Client.where('name LIKE ?', "%#{params[:q].upcase}%")
+      .or(Client.where('lower(surname) LIKE ?', "%#{params[:q].upcase}%"))
+      .or(Client.where('lower(pantronymic) LIKE ?', "%#{params[:q].upcase}%"))
+      .order('name asc').limit(25)
     end
 
     respond_to do |format|

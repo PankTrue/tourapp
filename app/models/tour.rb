@@ -10,9 +10,9 @@ class Tour < ApplicationRecord
 
   belongs_to :user
 
+
   has_and_belongs_to_many :clients, :inverse_of => :tours
 
-  # has_many :clients, through:
 
   accepts_nested_attributes_for :clients,
                                 allow_destroy: true
@@ -20,11 +20,13 @@ class Tour < ApplicationRecord
   validates :customer_id, presence: true
 
 
-
-
-
-
+  def clients_attributes=(attributes)
+    self.clients = attributes.values.map { |item| Client.find(item['id']) }
+    super(attributes)
+  end
 private
+
+
 
   def Tour::is_clients_uniq client_ids
     client_ids.map{|v| v[:id]}.uniq!.nil? ? true : false
