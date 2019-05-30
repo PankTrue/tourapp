@@ -40,7 +40,7 @@ $(document).ready(function ()
         var chart0 = new CanvasJS.Chart("chart0_container", {
             animationEnabled: true,
             title: {
-                text: "Title"
+                text: "График продаж"
             },
             axisX: {
                 valueFormatString: "DD/MM/YY"
@@ -58,8 +58,8 @@ $(document).ready(function ()
                 shared: true
             },
             data: [{
-                name: "Buy count",
-                type: "spline",
+                name: "Количество оформленных туров",
+                type: "line",
                 showInLegend: true,
                 dataPoints: chart0_data
             }]

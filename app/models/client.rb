@@ -22,6 +22,9 @@ class Client < ApplicationRecord
   validate :names_upcase
 
 
+  def fio
+    "#{name} #{surname} #{pantronymic}"
+  end
 
 private
   def names_upcase

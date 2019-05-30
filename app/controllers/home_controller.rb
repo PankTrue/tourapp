@@ -35,7 +35,6 @@ class HomeController < ApplicationController
       end
     end
 
-    puts data
     render json: data
   end
 

@@ -64,6 +64,7 @@ end
                 prepaid: rand(1000000),
                 voluntary_insurance: 'voluntary_insurance',
                 prihodnik_date: rand(Date.civil(2018, 1, 1)..Date.civil(2020, 12, 31)),
-                prihodnik_prepaid: rand(1000000)
+                prihodnik_prepaid: rand(1000000),
+                created_at: rand(Date.civil(2016, 1, 1)..Date.today),
           )
 end

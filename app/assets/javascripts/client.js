@@ -17,10 +17,9 @@ function datatables_init() {
     $('#clients-datatable').dataTable({
         serverSide: true,
         scrollX: true,
-        search: {
-            caseInsensitive: false
+        "search": {
+            "caseInsensitive": false
         },
-
         ajax: {
             url: $('#clients-datatable').data('source')
         },
@@ -29,8 +28,12 @@ function datatables_init() {
             {
                 data: 'id'
             }, {
-                data: 'FIO'
-            }, {
+                data: 'name'
+            },{
+                data: 'surname'
+            },{
+                data: 'pantronymic'
+            },{
                 data: "phone"
             }, {
                 data: "email"
