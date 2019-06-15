@@ -10,13 +10,13 @@
 
 <p>
   <strong>Customer:</strong>
-  <%= "#{@tour.customer.name} #{@tour.customer.surname} #{@tour.customer.pantronymic}" %>
+  <%= @tour.customer.fio %>
 </p>
 
 <p>
   <strong>Clients:</strong>
   <% @tour.clients.each do |c| %>
-  <li><%= "#{c.name} #{c.surname} #{c.pantronymic}" %></li>
+  <li><%= c.fio %></li>
   <% end %>
 </p>
 
@@ -57,7 +57,7 @@
 
 <p>
   <strong>Manager:</strong>
-  <%= "#{@manager.name} #{@manager.surname} #{@manager.pantronymic}"%>
+  <%= @manager.fio %>
 </p>
 
 <p>

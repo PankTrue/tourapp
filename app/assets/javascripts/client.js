@@ -28,11 +28,7 @@ function datatables_init() {
             {
                 data: 'id'
             }, {
-                data: 'name'
-            },{
-                data: 'surname'
-            },{
-                data: 'pantronymic'
+                data: 'fio'
             },{
                 data: "phone"
             }, {
@@ -62,7 +58,7 @@ function select2_init(element) {
             processResults: function(data, page) {
                 var res = {
                     results: $.map( data, function(client, i) {
-                        return { id: client.id, text: client.name + ' ' + client.surname + ' ' + client.pantronymic}
+                        return { id: client.id, text: client.fio}
                     } )
                 }
                 return res;

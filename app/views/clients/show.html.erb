@@ -87,11 +87,16 @@
         <tr>
           <td><%= link_to tour.id, tour_path,  class: 'btn btn-sm btn-default', data: { modal: true } %></td>
           <td><%= "#{tour.date_start}-#{tour.date_end}" %></td>
-          <td><%= ".l.'"  %></td>
+          <td><% if Clients_Tour.where(client_id: @client, tour_id: tour) and @client.id == tour.customer_id  %>
+              <%= 'Покупатель/Турист' %>
+              <% else %>
+              <%= @client.id == tour.customer_id ? 'Покупатель' : 'Турист' %>
+              <% end %>
+          </td>
           <td><%= tour.tour_country  %></td>
           <td><%= tour.tour_operator  %></td>
           <td><%= tour.cost_tour  %></td>
-          <td><%= "#{@manager.name} #{@manager.surname} #{@manager.pantronymic}" %></td>
+          <td><%= @manager.fio %></td>
         </tr>
       </tbody>
           <% end %>

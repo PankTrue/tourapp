@@ -11,8 +11,8 @@ class ClientsController < ApplicationController
   end
 
   def show
-    @tours = @client.tours
-    @manager = User.select(:name, :surname, :pantronymic).find(@client.user_id)
+    @tours = Tour.where(customer_id: @client.id) + @client.tours
+    @manager = User.select(:fio).find(@client.user_id)
     respond_modal_with @client
   end
 
@@ -55,10 +55,8 @@ class ClientsController < ApplicationController
     if(params[:q]).blank?
       @clients = Client.all.limit(25)
     else
-      @clients = Client.where('name LIKE ?', "%#{params[:q].upcase}%")
-      .or(Client.where('lower(surname) LIKE ?', "%#{params[:q].upcase}%"))
-      .or(Client.where('lower(pantronymic) LIKE ?', "%#{params[:q].upcase}%"))
-      .order('name asc').limit(25)
+      @clients = Client.where('fio LIKE ?', "%#{params[:q].downcase}%")
+      .order('fio asc').limit(25)
     end
 
     respond_to do |format|
@@ -74,9 +72,8 @@ private
     end
 
     def client_params
-      params.require(:client).permit( :name, :surname, :pantronymic, :gender,
-                                      :datebirth, :phone, :additional_phone, :email,
-                                      :user_id )
+      params.require(:client).permit( :fio, :gender,:datebirth, :phone,
+                                      :additional_phone, :email, :user_id )
     end
 
 end

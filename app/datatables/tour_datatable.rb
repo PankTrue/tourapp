@@ -58,8 +58,8 @@ class TourDatatable < AjaxDatatablesRails::ActiveRecord
     records.map do |record|
       {
         id: link_to(record.id, "/tours/#{record.id}", :class => 'btn btn-sm btn-default', data: { modal: true }),
-        customer: link_to("#{record.customer.name} #{record.customer.surname}", "/clients/#{record.customer_id}", :class => 'btn btn-sm btn-default', data: { modal: true }),
-        manager: "#{record.user.name} #{record.user.surname}",
+        customer: link_to(record.customer.fio.split(' ').map{|v| v.capitalize }.join(' '), "/clients/#{record.customer_id}", :class => 'btn btn-sm btn-default', data: { modal: true }),
+        manager: record.user.fio,
         tour_operator: record.tour_operator,
         appeal: record.appeal,
         advertising_source: record.advertising_source,

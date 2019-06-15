@@ -14,7 +14,7 @@ class ToursController < ApplicationController
   end
 
   def show
-    @manager = User.select(:name, :surname, :pantronymic).find(@tour.user_id)
+    @manager = User.select(:fio).find(@tour.user_id)
     respond_modal_with @tour
   end
 

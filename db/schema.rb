@@ -13,9 +13,7 @@
 ActiveRecord::Schema.define(version: 2019_05_18_174746) do
 
   create_table "clients", force: :cascade do |t|
-    t.string "name"
-    t.string "surname"
-    t.string "pantronymic"
+    t.string "fio"
     t.string "gender"
     t.date "datebirth"
     t.string "phone"
@@ -99,9 +97,7 @@ ActiveRecord::Schema.define(version: 2019_05_18_174746) do
     t.string "current_sign_in_ip"
     t.string "last_sign_in_ip"
     t.integer "role_id", default: 0, null: false
-    t.string "name"
-    t.string "surname"
-    t.string "pantronymic"
+    t.string "fio"
     t.string "phone"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false

@@ -14,22 +14,31 @@ class Client < ApplicationRecord
                                 allow_destroy: true
 
 
-  validates :name, presence: true
-  validates :surname, presence: true
-  validates :pantronymic, presence: true
+  validates :fio, presence: true
 
 
-  validate :names_upcase
+  validate :fio_upcase
+  # validate :validate_fio
 
-
-  def fio
-    "#{name} #{surname} #{pantronymic}"
+  def name
+    self.fio.split(' ')[0]
   end
+
+  def surname
+    self.fio.split(' ')[1]
+  end
+
+  def pantronymic
+    self.fio.split(' ')[2]
+  end
+
 
 private
-  def names_upcase
-    self.name.upcase!
-    self.surname.upcase!
-    self.pantronymic.upcase!
+  def fio_upcase
+    self.fio.downcase!
   end
+
+  # def validate_fio
+  #   errors.add(:clients, "UNIQUE") if self.fio.split(' ').size < 3
+  # end
 end

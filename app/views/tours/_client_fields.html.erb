@@ -4,8 +4,8 @@
   </td>
 
   <td>
-    <%= f.input_field :id, :as => :select, class: 'select2', selected: @tour.new_record? ? ['Select user'] : @tour.clients[f.index.to_i].id,
-                      collection: @tour.new_record? ? ['Select client'] : { :"#{@tour.clients[f.index.to_i].name} #{@tour.clients[f.index.to_i].surname} #{@tour.clients[f.index.to_i].pantronymic}" => @tour.clients[f.index.to_i].id },
+    <%= f.input_field :id, :as => :select, class: 'select2', selected: (@tour.new_record? or @tour.clients.blank?) ? ['Select user'] : @tour.clients[f.index.to_i].id,
+                      collection: (@tour.new_record? or @tour.clients.blank?)  ? ['Select client'] : { :"#{@tour.clients[f.index.to_i].fio}" => @tour.clients[f.index.to_i].id },
                       style: 'width: 250px;' %>
   </td>
 
