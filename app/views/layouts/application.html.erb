@@ -20,18 +20,14 @@
     </header>
 
 
-    <div class="container">
+    <div class="container-fluid container-limited">
       <div class="row">
-        <div class="col-lg-11">
-
           <% flash.each do |name, message| %>
             <div class="alert alert-<%= name %>">
               <%= message %>
             </div>
           <% end %>
-
           <%= yield %>
-        </div>
       </div>
     </div>
 

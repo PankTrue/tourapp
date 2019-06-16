@@ -18,7 +18,8 @@ class Client < ApplicationRecord
 
 
   validate :fio_upcase
-  # validate :validate_fio
+
+
 
   def name
     self.fio.split(' ')[0]
@@ -30,6 +31,10 @@ class Client < ApplicationRecord
 
   def pantronymic
     self.fio.split(' ')[2]
+  end
+
+  def fio
+    self[:fio].blank? ? '' : self[:fio].split(' ').map{|v| v.capitalize}.join(' ')
   end
 
 

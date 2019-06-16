@@ -133,6 +133,7 @@ ru:
       confirmation: "Да, уверен"
       delete_confirmation: "Подтвердить удаление"
       bulk_delete: "Следующие объекты будут удалены:"
+      new_model: "Создание клиента"
     export:
       confirmation: "Экспортировать как %{name}"
       select: "Выберите поля для экспорта"

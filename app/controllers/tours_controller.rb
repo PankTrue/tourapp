@@ -71,7 +71,7 @@ private
                                    :number_flight_back, :transfer_route, :transfer_type,
                                    :excursion_program, :additional_service, :cost_tour, :prepaid,
                                    :voluntary_insurance, :prihodnik_date, :prihodnik_prepaid,
-                                   clients_attributes: [:id]
+                                   clients_attributes: [:id,:_destroy]
       )
     end
 end

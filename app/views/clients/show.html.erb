@@ -85,9 +85,9 @@
           <% @tours.each do |tour|  %>
       <tbody>
         <tr>
-          <td><%= link_to tour.id, tour_path,  class: 'btn btn-sm btn-default', data: { modal: true } %></td>
+          <td><%= link_to tour.id, tour_path(tour.id),  class: 'btn btn-sm btn-default', data: { modal: true } %></td>
           <td><%= "#{tour.date_start}-#{tour.date_end}" %></td>
-          <td><% if Clients_Tour.where(client_id: @client, tour_id: tour) and @client.id == tour.customer_id  %>
+          <td><% if !Clients_Tour.where(client_id: @client, tour_id: tour).blank? and @client.id == tour.customer_id  %>
               <%= 'Покупатель/Турист' %>
               <% else %>
               <%= @client.id == tour.customer_id ? 'Покупатель' : 'Турист' %>

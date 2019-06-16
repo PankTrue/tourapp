@@ -17,14 +17,15 @@
   </table>
 
   <div class="form-actions">
-    <%= link_to_add_association 'Add Client', f, :clients, class: 'btn btn-primary add-association', data: { association_insertion_node: '.clients', association_insertion_method: :append } %>
+    <%= link_to_add_association 'Add Client', f, :clients, class: 'btn btn-primary add-association',
+                                data: { association_insertion_node: '.clients', association_insertion_method: :append } %>
   </div>
 
 
   <div class="form-group">
     <%= f.label :customer_id %>
     <%= f.input_field :customer_id, :as => :select, selected: @tour.new_record? ? '' : @tour.customer_id,
-                      collection: @tour.new_record? ? ['Select customer'] : { :"#{@tour.customer.name} #{@tour.customer.surname} #{@tour.customer.pantronymic}" => @tour.customer_id },
+                      collection: @tour.new_record? ? ['Select customer'] : { :"#{@tour.customer.fio}" => @tour.customer_id },
                       class: 'select2 form-control', style: 'width: 250px;' %>
   </div>
 

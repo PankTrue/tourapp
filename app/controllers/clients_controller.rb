@@ -11,7 +11,7 @@ class ClientsController < ApplicationController
   end
 
   def show
-    @tours = Tour.where(customer_id: @client.id) + @client.tours
+    @tours = (Tour.where(customer_id: @client.id) + @client.tours).sort.uniq.reverse
     @manager = User.select(:fio).find(@client.user_id)
     respond_modal_with @client
   end
