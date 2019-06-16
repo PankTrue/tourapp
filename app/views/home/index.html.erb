@@ -1,6 +1,6 @@
 <h2>chart0</h2>
 
-<%= select 'home', 'manager', User.all.collect { |u| ["#{u.name} #{u.surname} #{u.pantronymic}" , u.id] },
+<%= select 'home', 'manager', User.all.collect { |u| [u.fio , u.id] },
            {}, {:class => 'form-control', :id => 'chart0-select-manager'} %>
 
 
