@@ -8,5 +8,10 @@
                       collection: (@tour.new_record? or @tour.clients.blank?)  ? ['Select client'] : { :"#{f.object.fio}" => f.object.id },
                       style: 'width: 250px;' %>
   </td>
-
 </tr>
+
+<script>
+    $(document).ready(function () {
+        $('input#<%= "tour_clients_attributes_#{f.index}_id" %>').remove();
+    });
+</script>
